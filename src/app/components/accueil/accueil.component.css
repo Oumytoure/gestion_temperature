@@ -1,0 +1,7 @@
+.header{
+    justify-content: space-between;
+    height: 50px;
+}
+.btn-link, h5, .bi-house-fill{
+    color: #fff;
+}

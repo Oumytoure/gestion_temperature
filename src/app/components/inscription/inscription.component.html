@@ -1,1 +1,91 @@
-<p>inscription works!</p>
+<div class="container w-50 my-5">
+    <form [formGroup]="formGroup" (ngSubmit)="addUsers()" id="leform" class="row g-3 my-5">
+        <h2 class="text-center">Inscription</h2>
+        <ng-container *ngIf="this.errMsg">
+            <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
+        </ng-container>
+        <div class=" col-md-6">
+            <label for="nom">Nom</label>
+            <input [ngClass]="{'is-invalid':submitted && formGroup.controls['nom'].errors}" formControlName="nom"
+                type="text" class="form-control" autocomplete="on">
+            <div *ngIf="submitted && formGroup.controls['nom'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['nom'].errors['required']">
+                    Le nom est obligatoire!
+                </div>
+                <div *ngIf="submitted && formGroup.controls['nom'].errors['cannotContainSpace']">
+                    Espace non autorisé
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="prenom">Prenom</label>
+            <input [ngClass]="{'is-invalid':submitted && formGroup.controls['prenom'].errors}" formControlName="prenom"
+                type="text" class="form-control" autocomplete="on">
+            <div *ngIf="submitted && formGroup.controls['prenom'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['prenom'].errors['required']">
+                    Le prenom est obligatoire!
+                </div>
+                <div *ngIf="submitted && formGroup.controls['prenom'].errors['cannotContainSpace']">
+                    Espace non autorisé
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="email">Email Address</label>
+            <input [ngClass]="{'is-invalid':submitted && formGroup.controls['email'].errors}" formControlName="email"
+                type="email" class="form-control" autocomplete="on">
+            <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
+                    Le mail est obligatoire!
+                </div>
+                <div *ngIf="submitted && formGroup.controls['email'].errors['email']">
+                    Le mail n'est pas valide!'
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="role">Rôle</label>
+            <select class="form-select" [ngClass]="{'is-invalid':submitted && formGroup.controls['role'].errors}"
+                formControlName="role">
+                <option selected disabled></option>
+                <option *ngFor="let item of listDeroulant" [value]="item">{{item}}</option>
+            </select>
+            <div *ngIf="submitted && formGroup.controls['role'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['role'].errors['required']">
+                    Choisisez un role
+                </div>
+            </div>
+        </div>
+
+        <div class=" col-md-6">
+            <label for="password">Password</label>
+            <input [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}"
+                formControlName="password" type="password" class="form-control" id="pass1">
+            <div *ngIf="submitted && formGroup.controls['password'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['password'].errors['required']">
+                    Le Password est necessaire!
+                </div>
+                <div *ngIf="submitted && formGroup.controls['password'].errors['minlength']">
+                    Saisi au moins 6 caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="passwordConfirm">Confirmation Password</label>
+            <input [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}"
+                formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
+            <div *ngIf="submitted && formGroup.controls['passwordConfirm'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['passwordConfirm'].errors['required']">
+                    Veillez confirmer le mot de passe
+                </div>
+                <div *ngIf="submitted && formGroup.controls['passwordConfirm'].errors['mustMatch']">
+                    Les mots de passes ne correspondent pas
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-outline-primary">Inscrire</button>
+        </div>
+    </form>
+</div>

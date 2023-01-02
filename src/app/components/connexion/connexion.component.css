@@ -1,0 +1,14 @@
+body{ 
+    background-image: url('../../../assets/nature.jpeg');
+    background-repeat: no-repeat;
+}
+.row {
+    width: 450px;
+    margin: 0px auto;
+    border: 1px solid #F5F5F5;
+    border-radius: 5px;
+    background: #fff;
+}
+.row form {
+    padding: 20px;
+}
