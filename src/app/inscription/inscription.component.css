@@ -6,10 +6,6 @@
     padding-top: 150px;
 
     
-    
-    
-
-    
 }
 .form{
     width: 50%;
@@ -37,3 +33,13 @@
 
     
 }
+.btn-b{
+    display: flex;
+    gap: 500px;
+    
+}
+/* .buton{
+    background-color: #F83232;
+    width: 50px;
+    justify-content: center;
+} */

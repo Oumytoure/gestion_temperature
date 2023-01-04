@@ -27,6 +27,7 @@
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
              
+             
             ],
             "scripts": []
           },
@@ -89,6 +90,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
+             
             
             ],
             "scripts": []

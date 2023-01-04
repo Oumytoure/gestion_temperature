@@ -11,21 +11,45 @@
         <div class="row d-flex justify-content-center ">
           <div class="col-lg-10" >
             <h2 class="fw-bold mb-5 text-center">AJOUTER UN UTILISATEUR</h2>
-            <form >
+            
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
               <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div *ngIf="!verifPass" class="d-flex justify-content-center text text-danger" id="">
+                <span>les deux password ne correspondent pas!</span>
+              </div>
               <div class="row">
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                    
                     <label class="form-label " for="form3Example1">PRENOM</label>
-                    <input type="text" id="form3Example1" class="form-control input" />
+                   <input [ngClass]="{'is-invalid':submitted && registerForm.controls['prenom'].errors}" formControlName="prenom" name="prenom"
+                   type="text" class="form-control" autocomplete="on">
+               <div *ngIf="submitted && registerForm.controls['prenom'].errors" class="text-danger">
+                   <div *ngIf="submitted && registerForm.controls['prenom'].errors['required']">
+                       champs requis!
+                   </div>
+                   <div *ngIf="submitted && registerForm.controls['prenom'].errors['cannotContainSpace']">
+                       Espace non autorisé
+                   </div>
+               </div>
                   </div>
                 </div>
+                
+        
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                   
                     <label class="form-label text-left" for="form3Example2">NOM</label>
-                    <input type="text" id="form3Example2" class="form-control input" />
+                    <input [ngClass]="{'is-invalid':submitted && registerForm.controls['nom'].errors}" formControlName="nom"
+                    type="text" class="form-control" autocomplete="on">
+                <div *ngIf="submitted && registerForm.controls['nom'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['nom'].errors['required']">
+                        champs requis!
+                    </div>
+                    <div *ngIf="submitted && registerForm.controls['nom'].errors['cannotContainSpace']">
+                        Espace non autorisé
+                    </div>
+                </div>
                   </div>
                 </div>
               </div>
@@ -35,17 +59,33 @@
                   <div class="form-outline">
                    
                     <label class="form-label" for="form3Example1">ADRESSE EMAIL</label>
-                    <input type="text" id="form3Example1" class="form-control input" />
+                    <input [ngClass]="{'is-invalid':submitted && registerForm.controls['email'].errors}" formControlName="email"
+                    type="text" class="form-control" autocomplete="on">
+                <div *ngIf="submitted && registerForm.controls['email'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['email'].errors['required']">
+                        champs requis!
+                    </div>
+                    <div *ngIf="submitted && registerForm.controls['email'].errors['cannotContainSpace']">
+                        Espace non autorisé
+                    </div>
+                </div>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label for="inputState" class="form-label">ROLE</label>
-                    <select id="role" name="role" class="form-select">
-                        <option selected></option>
-                        <option value="1">Admin</option>
-                        <option value="2">User</option>
-                      </select>
+                    <select class="form-select" [ngClass]="{'is-invalid':submitted && registerForm.controls['role'].errors}"
+                    formControlName="role">
+                    <option selected disabled></option>
+                    <option value="1">Admin</option>
+                    <option value="2">User</option>
+                    
+                </select>
+                <div *ngIf="submitted && registerForm.controls['role'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['role'].errors['required']">
+                        Choisisez un role
+                    </div>
+                </div>
 
                   </div>
                 </div>
@@ -54,25 +94,75 @@
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example1">MOT DE PASSE</label>
-                    <input type="text" id="form3Example1" class="form-control input" />
+                 <!--    <input [ngClass]="{'is-invalid':submitted && registerForm.controls['mot_pass'].errors}" formControlName="mot_pass"
+                    type="text" class="form-control" autocomplete="on">
+                <div *ngIf="submitted && registerForm.controls['mot_pass'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['mot_pass'].errors['required']">
+                        champs requis!
+                    </div>
+                    <div *ngIf="submitted && registerForm.controls['mot_pass'].errors['cannotContainSpace']">
+                        Espace non autorisé
+                    </div>
+                </div> -->
+
+
+                    <input [ngClass]="{'is-invalid':submitted && registerForm.controls['mot_pass'].errors}" formControlName="mot_pass"
+                    type="password" class="form-control" autocomplete="on" id="pass1">
+                <div *ngIf="submitted && registerForm.controls['mot_pass'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['mot_pass'].errors['required']">
+                        champs requis!
+                    </div>
+                     <div *ngIf="submitted && registerForm.controls['mot_pass'].errors['minlength']">
+                    Saisi au moins 8 caracteres
+                </div>
+                </div>
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
                     <label class="form-label" for="form3Example2">CONFIRMATION</label>
-                    <input type="text" id="form3Example2" class="form-control input" />
+                <!--     <input [ngClass]="{'is-invalid':submitted && registerForm.controls['confirmation'].errors}" formControlName="confirmation"
+                    type="password" class="form-control" autocomplete="on">
+                <div *ngIf="submitted && registerForm.controls['confirmation'].errors" class="text-danger">
+                    <div *ngIf="submitted && registerForm.controls['confirmation'].errors['required']">
+                        champs requis!
+                    </div>
+                    <div *ngIf="submitted && registerForm.controls['confirmation'].errors['cannotContainSpace']">
+                        Espace non autorisé
+                    </div>
+                </div> -->
+            
+
+                <input [ngClass]="{'is-invalid':submitted && registerForm.controls['confirmation'].errors}"
+                formControlName="confirmation" type="password" class="form-control" id="pass2" #pass2 (change)="checkPassword()">
+            <div *ngIf="submitted && registerForm.controls['confirmation'].errors" class="text-danger">
+                <div *ngIf="submitted && registerForm.controls['confirmation'].errors['required']">
+                  
+                    Veillez confirmer le mot de passe
+                </div>
+                <!-- <div *ngIf="submitted && registerForm.controls['confirmation'].errors['mustMatch']">
+                    Les mots de passes ne correspondent pas
+                </div> -->
+            </div>
+
+
                   </div>
                 </div>
               </div>
-  
-  
+
               <!-- Submit button -->
-              <button type="submit" class="btn">
-                <span class="boutton">inscrire</span>  
-              </button>
-  
-             
-             
+              <div class="btn-b">
+                    <button type="submit" class="btn ">
+                        <span class="boutton">inscrire </span> 
+                    </button>
+                    <!-- <button class="buton " > -->
+                    <svg width="47" height="35" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="47" height="47" fill="#F83232"/>
+                        <path d="M38.1875 37.2083V28.6896C38.1875 26.9271 37.5674 25.4257 36.3271 24.1854C35.0868 22.9451 33.5854 22.325 31.8229 22.325H11.4562L18.9958 29.8646L16.9396 31.9208L5.875 20.8562L16.9396 9.79166L18.9958 11.8479L11.4562 19.3875H31.8229C34.3687 19.3875 36.5556 20.2932 38.3833 22.1047C40.2111 23.9161 41.125 26.1111 41.125 28.6896V37.2083H38.1875Z" fill="white"/>
+                    </svg>
+                <!-- </button> -->
+                </div>
+        
             </form>
           </div>
         </div>
