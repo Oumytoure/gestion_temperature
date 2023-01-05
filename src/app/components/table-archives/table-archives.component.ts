@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -8,14 +9,20 @@ import Swal from 'sweetalert2';
   styleUrls: ['./table-archives.component.css']
 })
 export class TableArchivesComponent implements OnInit{
+  currentUser: any = {};
   filterTerm!: string;
   Users:any = [];
   user:any;
   totalLenght: any;
   page : number=1;
 
-  constructor(private authService: AuthService){
+  constructor(private authService: AuthService,
+              private activatedRoute: ActivatedRoute){
 
+              let id = this.activatedRoute.snapshot.paramMap.get('id');
+              this.authService.getUserProfile(id).subscribe((res) => {
+                this.currentUser = res.msg;
+              });
   }
 
   ngOnInit(): void {

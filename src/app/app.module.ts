@@ -7,7 +7,6 @@ import { AuthInterceptor } from './services/authconfig.interceptor';
 import { AppComponent } from './app.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { InscriptionComponent } from './components/inscription/inscription.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { TableActifsComponent } from './components/table-actifs/table-actifs.component';
 import { TableArchivesComponent } from './components/table-archives/table-archives.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
@@ -15,19 +14,20 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ContentAccueilComponent } from './components/content-accueil/content-accueil.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ProfilComponent } from './components/profil/profil.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ConnexionComponent,
-    NavigationComponent,
     TableArchivesComponent,
     TableActifsComponent,
     InscriptionComponent,
     AccueilComponent,
     ContentAccueilComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,

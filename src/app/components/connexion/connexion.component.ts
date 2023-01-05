@@ -19,8 +19,8 @@ export class ConnexionComponent implements OnInit {
     private router: Router
   ){
     this.formGroup = this.formBuilder.group({
-      email:['saly2@gmail.com', [Validators.required, Validators.email]],
-      password:['popopopo', [Validators.required, Validators.minLength(6)]]
+      email:['', [Validators.required, Validators.email]],
+      password:['', [Validators.required, Validators.minLength(6)]]
     });
   }
 

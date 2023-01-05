@@ -1,8 +1,5 @@
-   <app-navigation></app-navigation>
-    <app-header></app-header>
-  <body>
-
-<div class="tab my-5">
+  <body class="d-flex">
+<div class="container tab my-5">
     <!-- -------------------Recherche---------------- -->
     <div class="form-group col-md-3">
       <div class="input-group">
@@ -53,5 +50,62 @@
 <div class="pagination fixed-bottom justify-content-center">
     <pagination-controls (pageChange)="page=$event"></pagination-controls>
 </div>
-    
 </body>  
+
+
+<!-- Modal pour la modification -->
+<div class="modal fade" id="modifier" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modifier l'utilisateur</h5>
+      </div>
+      <div *ngIf="!errMsg" class="alert alert-danger" role="alert">
+        <strong> Erreur </strong> Email déjà existant !
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formGroup" (ngSubmit)="onUpdate()">
+          <label for='prenom'>Prenom</label>
+          <input type="text" formControlName="prenom" class="form-control">
+          <div *ngIf="submitted && formGroup.controls['prenom'].errors" class="text-danger">
+            <div *ngIf="submitted && formGroup.controls['prenom'].errors['required']">
+              Veillez renseignez le prenom
+            </div>
+            <div *ngIf="submitted && formGroup.controls['prenom'].errors['cannotContainSpace']">
+              Espace non autorisé
+            </div>
+          </div>
+          <br />
+          <label for='nom'>Nom</label>
+          <input type="text" formControlName="nom" class="form-control">
+          <div *ngIf="submitted && formGroup.controls['nom'].errors" class="text-danger">
+            <div *ngIf="submitted && formGroup.controls['nom'].errors['required']">
+              Veillez renseignez le nom
+            </div>
+            <div *ngIf="submitted && formGroup.controls['nom'].errors['cannotContainSpace']">
+              Espace non autorisé
+            </div>
+          </div>
+          <br />
+          <label for='email'>Adresse email</label>
+          <input type="email" formControlName="email" class="form-control">
+          <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
+            <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
+              Veillez renseignez le mail
+            </div>
+            <div *ngIf="submitted && formGroup.controls['email'].errors['email']">
+              Le mail n'est pas valide!'
+          </div>
+          </div>
+          <br />
+          <button type="submit" class="btn btn-outline-primary">Sauvegarder</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-dismiss="modal">
+          <i style="font-size: 20px;" class="bi bi-backspace"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
