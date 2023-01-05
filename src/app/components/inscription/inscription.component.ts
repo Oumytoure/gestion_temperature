@@ -72,7 +72,6 @@ export class InscriptionComponent {
         }); window.setTimeout(function () { location.reload() }, 1000)
           break;
       }
-        /*         this.ngZone.run(() => this.router.navigateByUrl('/')) */
       }, // Intercepter les messages d'erreurs du serveur
         error => {
           this.errMsg = error.error.error
