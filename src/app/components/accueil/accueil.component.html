@@ -1,33 +1,7 @@
 
-<div class="d-flex bg-primary header">
-    <div class="d-flex m-2">
-        <i style="font-size: 25px;" class="bi bi-house-fill"></i>
-        <h5 class="m-2">Prenom Nom</h5>
-    </div>
-    <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-        <i style="font-size: 25px;" class="bi bi-gear-fill"></i>
-    </button>
-</div>
+    <app-navigation></app-navigation>
+    <app-header></app-header>
 
-<app-navigation></app-navigation>
-
-<!-- --------------------------Paramètrage------------------- -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-        <h4 class="offcanvas-title" id="offcanvasRightLabel">Paramétres</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <div>
-            <button type="button" class="btn btn-outline-info my-3">
-                <i style="font-size: 20px;" class="bi bi-person"></i> Profil
-            </button>
-        </div>
-        <div>
-            <button type="button" class="btn btn-outline-info">
-                <!-- <a (click)="logout()" *ngIf="this.authService.isLoggedIn" href=""> -->
-                    <i style="font-size: 20px;" class="bi bi-box-arrow-right"></i> Deconnexion <!-- </a> -->
-            </button>
-        </div>
-    </div>
-</div>
+<body>
+    <app-content-accueil></app-content-accueil>
+</body>

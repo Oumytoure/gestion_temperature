@@ -38,26 +38,19 @@ import { Router } from "@angular/router";
         .put(API_URL, data, { headers: this.headers })
         .pipe(catchError(this.handleError));
     }
-    // Delete
-/*     deleteUser(id: any): Observable<any> {
-        let API_URL = `${this.endpoint}/delete-user/${id}`;
-        return this.http
-        .delete(API_URL, { headers: this.headers })
-        .pipe(catchError(this.handleError));
-    } */
-  
 
     // Ajouter un utilisateur
     addUser(prenom: string, nom: string, email: string, role: string, password: string, etat: boolean, matricule: String): Observable<any> {
-      var formData: any = new FormData();
-        formData.append('prenom', prenom);
-        formData.append('nom', nom);
-        formData.append('email', email);
-        formData.append('role', role);
-        formData.append('password', password);
-        formData.append('etat', etat);
-        formData.append('matricule', matricule);
-      return this.http.post<User>(`${this.endpoint}/add-user`, formData, {
+        const user={
+          prenom: prenom,
+          nom: nom,
+          email:email,
+          password: password,
+          etat:etat,
+          role:role,
+          matricule:matricule
+        }
+      return this.http.post<User>(`${this.endpoint}/add-user`, user, {
         reportProgress: true,
         observe: 'events',
       });

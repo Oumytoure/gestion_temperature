@@ -11,6 +11,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { TableActifsComponent } from './components/table-actifs/table-actifs.component';
 import { TableArchivesComponent } from './components/table-archives/table-archives.component';
 import { AccueilComponent } from './components/accueil/accueil.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ContentAccueilComponent } from './components/content-accueil/content-accueil.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
@@ -21,14 +25,18 @@ import { AccueilComponent } from './components/accueil/accueil.component';
     TableArchivesComponent,
     TableActifsComponent,
     InscriptionComponent,
-    AccueilComponent
+    AccueilComponent,
+    ContentAccueilComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule,
+    NgxPaginationModule
   ],
   providers: [
     {

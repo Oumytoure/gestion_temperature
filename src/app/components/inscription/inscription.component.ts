@@ -2,8 +2,9 @@ import { Component, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { HttpEventType, HttpEvent } from '@angular/common/http';
 import { UsernameValidator } from 'src/app/username.validator';
-/* import { MustMatch } from 'src/app/MustMatch'; */
+import { MustMatch } from 'src/app/must-match.validator';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,6 +15,7 @@ import Swal from 'sweetalert2';
 export class InscriptionComponent {
   formGroup: FormGroup;
   submitted = false;
+  percentDone?: any = 0;
   errMsg: any;
 
   constructor(private formBuilder: FormBuilder,
@@ -30,7 +32,7 @@ export class InscriptionComponent {
       passwordConfirm: ['', Validators.required],
       etat: [1, Validators.required],
       matricule: ['']
-    }/* , { validator: MustMatch('password', 'passwordConfirm') } */
+    }, { validator: MustMatch('password', 'passwordConfirm') }
     )
   }
 
@@ -41,16 +43,26 @@ export class InscriptionComponent {
     if (this.formGroup.invalid) {
       return;
     }
+    this.submitted=false
     //générer matricule pour administrateur et utilisateur
-/*     let matriculeGenerate;
+    let matriculeGenerate;
     this.formGroup.value.role == "Administrateur" ? matriculeGenerate = "MAT" + (Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1))
       : matriculeGenerate = "MUT" + (Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1));
-    this.formGroup.controls.matricule.setValue(matriculeGenerate) */
+    this.formGroup.controls.matricule.setValue(matriculeGenerate)
 
     this.authService.addUser(this.formGroup.value.prenom, this.formGroup.value.nom,
       this.formGroup.value.email, this.formGroup.value.role, this.formGroup.value.password,
-      this.formGroup.value.etat, this.formGroup.value.matricule).subscribe(() => {
-        console.log('Inscription réussie !')
+      this.formGroup.value.etat, this.formGroup.value.matricule).subscribe((event: HttpEvent<any>) => {
+        switch (event.type) {
+          case HttpEventType.Sent:
+            console.log('Requete éxecutée!');
+            break;
+          case HttpEventType.ResponseHeader:
+            console.log('Response header has been received!');
+            break;
+          case HttpEventType.Response:
+            console.log('User successfully created!', event.body);
+        this.percentDone = false;
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -58,11 +70,12 @@ export class InscriptionComponent {
           showConfirmButton: false,
           timer: 1500
         }); window.setTimeout(function () { location.reload() }, 1000)
+          break;
+      }
         /*         this.ngZone.run(() => this.router.navigateByUrl('/')) */
       }, // Intercepter les messages d'erreurs du serveur
         error => {
           this.errMsg = error.error.error
-          console.log(this.errMsg)
         })
   }
 }

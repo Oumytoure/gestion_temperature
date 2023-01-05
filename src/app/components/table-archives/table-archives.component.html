@@ -1,1 +1,45 @@
-<p>table-archives works!</p>
+<app-navigation></app-navigation>
+<app-header></app-header>
+<body>
+  <div class="tab my-5">
+    <div class="form-group col-md-3">
+      <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-search"></i></span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Rechercher un utilisateur"
+        [(ngModel)]="filterTerm"/>
+      </div>
+    </div>
+    
+    <table class="table table-hover my-3">
+        <thead>
+            <tr class="line">
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rôle</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght  };">
+                <td>{{ donnee.prenom }}</td>
+                <td>{{ donnee.nom }}</td>
+                <td>{{ donnee.email }}</td>
+                <td>{{ donnee.role }}</td>
+                <td>
+                  <button class="btn link" (click)="dearchiveUser(donnee._id, donnee.etat)">
+                    <i class="bi bi-arrow-up-square"></i>
+                  </button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+      <!-- pagination -->
+      <div class="pagination fixed-bottom justify-content-center">
+        <pagination-controls (pageChange)="page=$event"></pagination-controls>
+      </div>
+    </body>
