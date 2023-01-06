@@ -14,15 +14,16 @@
         border-radius: 7px;
         width: 250px;
         height: 120px;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
     .ends{
-        margin-left: 10%;
+
         margin-top: 50px;
         width: 280px;
         height: 250px;
         background-color: #fff;
-        border: 1px solid #0d6efd;
         border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     .hist{
         width: 800px;
@@ -30,6 +31,6 @@
         margin-top: 50px;
         margin-left: 2%;
         background-color: #fff;
-        border: 1px solid #0d6efd;
         border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
