@@ -25,7 +25,7 @@ img{
 .btn-link, h5, .bi-house-fill{
     color: #fff;
 }
-.bi{
+.bi-person-check, .bi-person-x, .bi-plus-circle, .bi-house-fill, .bi-gear-fill{
     margin-left: 25%;
     margin-top: 10%;
     color: #fff;
