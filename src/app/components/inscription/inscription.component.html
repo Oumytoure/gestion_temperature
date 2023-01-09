@@ -1,7 +1,7 @@
 <body class="d-flex">
 <div class="container w-50 my-5">
     <form [formGroup]="formGroup" (ngSubmit)="addUsers()" id="leform" class="row g-3 my-5">
-        <h2 class="text-center">Ajouter un utilisateur</h2>
+        <h2 class="text-center text-primary">Ajouter un utilisateur</h2>
         <ng-container *ngIf="this.errMsg">
             <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
         </ng-container>
