@@ -34,5 +34,27 @@
         <app-table-actifs *ngIf="showActifs"></app-table-actifs>
         <app-table-archives *ngIf="showArchive"></app-table-archives>
         <app-inscription *ngIf="showInscription"></app-inscription>
+        <app-profil *ngIf="showProfil"></app-profil>
     </div>
 </body>
+
+ <!-- --------------------------Paramètrage------------------- -->
+ <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h4 class="offcanvas-title" id="offcanvasRightLabel">Paramétres</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
+            <button (click)="affiche5()" type="button" class="btn btn-outline-info my-3" data-bs-dismiss="offcanvas">
+                <i style="font-size: 20px;" class="bi bi-person"></i> Profil
+            </button>
+        </div>
+        <div>
+            <button type="button" class="btn btn-outline-info">
+                <a (click)="logout()" *ngIf="this.authService.isLoggedIn">
+                <i style="font-size: 20px;" class="bi bi-box-arrow-right"></i> Deconnexion </a> 
+            </button>
+        </div>
+    </div>
+</div>
