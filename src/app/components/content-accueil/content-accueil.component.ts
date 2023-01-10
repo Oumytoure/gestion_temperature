@@ -9,13 +9,4 @@ export class ContentAccueilComponent {
   on: boolean = false;
   off: boolean = true;
 
-  public onVentillateur():void{
-    this.on = true;
-    this.off = false;
-  }
-
-  public offVentillateur():void{
-    this.on = false;
-    this.off = true;
-  }
 }
