@@ -35,20 +35,57 @@
     <div class="ends">
         <h4 class="text-primary text-center m-2">Contrôle du système</h4>
         <div class="d-flex justify-content-center" style="margin-top: -3%;">
-            <a style="display: flex; flex-direction: column; text-decoration: none; margin-right: 65px;">
+            <a (click)="onVentillateur()" style="display: flex; flex-direction: column; text-decoration: none; margin-right: 65px;">
                 <i style="font-size: 30px;" class="bi bi-power text-success"></i>
                 <span style="margin-top: -13px;" class="text-success">ON</span>
             </a>
-            <a style="display: flex; flex-direction: column; text-decoration: none;">
+            <a (click)="offVentillateur()" style="display: flex; flex-direction: column; text-decoration: none;">
                 <i style="font-size: 30px;" class="bi bi-power text-danger"></i>
                 <span style="margin-top: -13px;" class="text-danger">OFF</span>
             </a>
         </div>
         <div  class="d-flex justify-content-center" style="margin-top: -11%;"> 
-            <img class="img1 m-0" src="../../../assets/ventillateurOff.png" alt="">
+            <img *ngIf="off" class="img1 m-0" src="../../../assets/ventillateurOff.png" alt="">
+            <img *ngIf="on" class="img2" src="../../../assets/ventillateurOn.gif" alt="">
         </div>
     </div>
     <div class="hist">
         <h4 class="text-primary text-center m-2">Historique de la semaine</h4>
+        <table class="table table-bordered my-5">
+            <thead>
+              <tr>
+                <th scope="col"><i class="bi bi-calendar-check"></i> Jours</th>
+                <th scope="col">Lundi</th>
+                <th scope="col">Mardi</th>
+                <th scope="col">Mercredi</th>
+                <th scope="col">Jeudi</th>
+                <th scope="col">Vendredi</th>
+                <th scope="col">Samedi</th>
+                <th scope="col">Dimanche</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><i class="bi bi-thermometer-half"></i> Température</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="bi bi-droplet-half"></i> Humidité</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>

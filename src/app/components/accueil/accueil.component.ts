@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
