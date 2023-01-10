@@ -1,5 +1,9 @@
 body{
-    background-color: #E4F2F6;
+    background-image: url('https://cdn.discordapp.com/attachments/1054342024880472086/1054743835550429184/nature.jpeg');
+    background-size: 100%;
+    width: 100%;
+    
+
 }
 .container{
     margin: 0px auto;
@@ -7,4 +11,5 @@ body{
     box-shadow: 7px 2px 2px blue;
     border-radius: 5px;
     background: #fff;
+    height: 500px;
 }

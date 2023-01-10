@@ -6,5 +6,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-accueil.component.css']
 })
 export class ContentAccueilComponent {
+//
+imageSrc ="../../../assets/ventillateurOff.png";
+//
+imageButtons = [ {src:'../../../assets/ventillateurOff.png'}];
+imageButtonOn = [  {src:'../../../assets/ventillateurOn.gif'}];
+//
+constructor() { }
+ngOnInit() {
 
+}
+//
+onClick(imageNameObject: {
+  src: string
+}) {
+  this.imageSrc = imageNameObject.src
+}
 }
