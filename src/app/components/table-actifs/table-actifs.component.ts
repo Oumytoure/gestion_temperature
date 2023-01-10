@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
@@ -22,8 +22,6 @@ submitted = false;
 errMsg:any = true;
 
 constructor(private activatedRoute: ActivatedRoute,
-            private router: Router,
-            private ngZone: NgZone,
             private formBuilder: FormBuilder,
             public authService: AuthService){
 
