@@ -1,7 +1,9 @@
+
 <body>
   <img src="../../../assets/nature.jpeg" alt="">
   <div class="container">
     <form class="row g-3 p-3 d-flex justify-content-center" [formGroup]="formGroup" (ngSubmit)="loginUser()">
+
       <ng-container *ngIf="this.errMsg">
         <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
       </ng-container>
@@ -37,4 +39,5 @@
       </div>
     </form>
   </div>
+
 </body>
