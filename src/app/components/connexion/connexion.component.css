@@ -1,10 +1,20 @@
+img{
+    width: 780px;
+    height: 500px;
+    margin-left: 18%;
+    margin-top: 8%;
+}
+.container{
+    margin-top: -500px;
+    margin-left: 600px;
+}
 .row {
-    width: 450px;
-    margin: 0px auto;
-    border: 1px solid #F5F5F5;
-    border-radius: 5px;
-    background: #fff;
+    width: 340px;
+    height: 500px;
+    background: #E4F2F6;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    position: absolute;
 }
 .row form {
-    padding: 20px;
+    padding: 20px; 
 }

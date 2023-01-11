@@ -1,1 +1,112 @@
-<p>profil works!</p>
+    <div class="m-5 p-3 profil">
+        <div class="d-flex">
+            <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Nom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.nom }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Rôle : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.role }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Matricule : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.matricule }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Email : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.email }}</p>
+        </div>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)"><i class="bi bi-pen"></i> Modifier</button>
+    </div>
+    <h4 class="text-primary" style="margin-left: 50px;" >Changer le mot de passe?</h4>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title " id="exampleModalLabel " >MODIFICCATION PROFIL</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div *ngIf="!errMsg" class="alert alert-danger" role="alert">
+            <strong> Erreur </strong> Email déjà existant !
+          </div>
+        <form [formGroup]="formGroup" (ngSubmit)="onUpdate()">
+            <label for='prenom'>Prenom</label>
+            <input type="text" formControlName="prenom" class="form-control">
+            <div *ngIf="submitted && formGroup.controls['prenom'].errors" class="text-danger">
+              <div *ngIf="submitted && formGroup.controls['prenom'].errors['required']">
+                Veillez renseignez le prenom
+              </div>
+              <div *ngIf="submitted && formGroup.controls['prenom'].errors['cannotContainSpace']">
+                Espace non autorisé
+              </div>
+            </div>
+            <br />
+            <label for='nom'>Nom</label>
+            <input type="text" formControlName="nom" class="form-control">
+            <div *ngIf="submitted && formGroup.controls['nom'].errors" class="text-danger">
+              <div *ngIf="submitted && formGroup.controls['nom'].errors['required']">
+                Veillez renseignez le nom
+              </div>
+              <div *ngIf="submitted && formGroup.controls['nom'].errors['cannotContainSpace']">
+                Espace non autorisé
+              </div>
+            </div>
+            <br />
+            <label for='email'>Adresse email</label>
+            <input type="email" formControlName="email" class="form-control">
+            <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
+              <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
+                Veillez renseignez le mail
+              </div>
+              <div *ngIf="submitted && formGroup.controls['email'].errors['email']">
+                Le mail n'est pas valide!'
+            </div>
+            </div>
+            <br />
+            <div class="d-flex " style="gap: 250px;" >
+                <div><button type="submit" class="btn btn-outline-primary" style="margin-left: 30px;">Valider</button></div>
+                <div><button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i style="font-size: 20px;" class="bi bi-backspace"></i></button></div>
+            </div>
+          </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="m-5 p-3 profile ">
+        <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
+            <label for="mot_pass" class="col-3" name="mot_pass">Ancien</label>
+            <input type="text" formControlName="prenom" class="form-control mb-3 " >
+            <!-- <h6> prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p> -->
+        </div>
+        <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
+            <label for="mot_pass" class="col-3" name="mot_pass">Nouveau</label>
+            <input type="text" formControlName="prenom" class="form-control mb-3">
+            <!-- <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p> -->
+        </div>
+
+        <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
+            <label for="mot_pass" class="col-3" name="mot_pass">Confirmation</label>
+            <input type="text" formControlName="prenom" class="form-control  mb-2">
+            <!-- <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p> -->
+        </div>
+        <!-- <div class="d-flex">
+            <h6> Nom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.nom }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Rôle : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.role }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Matricule : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.matricule }}</p>
+        </div>
+        <div class="d-flex">
+            <h6> Email : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.email }}</p>
+        </div> -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)"><i class="bi bi-pen"></i> Modifier</button>
+    </div>
+
