@@ -20,25 +20,25 @@
               <th scope="col">Email</th>
               <th scope="col">Rôle</th>
               <th *ngIf="this.currentUser.role === 'Utilisateur'" scope="col">Date inscription</th>
-              <th *ngIf="this.currentUser.role === 'Administrateur'" scope="col">Actions</th>
+              <th *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'" scope="col">Actions</th>
           </tr>
       </thead>
       <!-- Recuperer et afficher les informations de la base de donnée -->
       <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght}">
-        <tr *ngIf="donnee._id !== this.currentUser._id"> <!-- Pour filter l'utilisateur qui est connecté -->
+        <tr *ngIf="(donnee._id !== this.currentUser._id) && (donnee.role !== 'Super_admin')"> <!-- Pour filter l'utilisateur qui est connecté -->
               <td>{{ donnee.prenom }}</td>
               <td>{{ donnee.nom }}</td>
               <td>{{ donnee.email }}</td>
               <td>{{ donnee.role }}</td>
-              <td *ngIf="this.currentUser.role === 'Administrateur'">
+              <td *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'">
                 <button class="btn link" (click)="archiver(donnee._id, donnee.etat)">
-                  <i class="bi bi-arrow-down-square"></i>
+                  <i class="bi bi-arrow-down-square" title="Archiver"></i>
                 </button>
                 <button class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
-                  <i class="bi bi-pencil-square"></i>
+                  <i class="bi bi-pencil-square" title="Modifier"></i>
                 </button>
                 <button class="btn link" (click)="switcher(donnee._id, donnee.role)">
-                  <i class="bi bi-arrow-left-right" ></i>
+                  <i class="bi bi-arrow-left-right" title="Switcher"></i>
                 </button>
               </td>
               <td *ngIf="this.currentUser.role === 'Utilisateur'">{{ donnee.createdAt | date:'d MMMM yyyy à HH:mm'}} </td>

@@ -1,12 +1,13 @@
-<div class="d-flex middle justify-content-center">
+
+<div class="d-flex middle justify-content-center align-items-center">
     <div class="col-4 middles">
         <div class="d-flex justify-content-center">
             <h4>8H 00</h4>
             <img class="img" src="../../../assets/lever-soleil.png" alt="">
         </div>
         <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité</p>
+            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
+            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
         </div>
     </div>
     <div class="col-4 middles">
@@ -15,24 +16,52 @@
             <img class="img" src="../../../assets/soleil-chaud.png" alt="">
         </div>
         <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité</p>
+            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
+            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
         </div>
     </div>
     <div class="col-4 middles">
         <div class="d-flex justify-content-center">
             <h4>19H 00</h4>
-            <img class="img" src="../../../assets/lune.png" alt="">
+            <img class="img" src="../../../assets/lune.png" alt="" wi>
         </div>
         <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité</p>
+            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
+            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
         </div>
     </div>
 </div>
 
 <div class="d-flex end">
-
+    <div class="ends">
+        <h4 class="text-primary text-center m-2">Contrôle du système</h4>
+        <div class="d-flex justify-content-center" style="margin-top: -3%;">
+            
+                <!-- button OFF -->
+                <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)"
+                    style="display: flex; justify-content: center; align-items: center;
+                    border-color: red; width: 50px; margin : 5px;"
+                    class="button rounded-circle">
+                    <i class="bg-white rounded-circle card-img-top"
+                     style="font-size: 30px;" class="bi bi-power text-danger" title="OFF"></i>    
+                </button>
+              
+                <!-- button On -->
+                <button *ngFor="let imageButton of imageButtonOn;" (click)="onClick(imageButton)"
+                    style="display: flex; justify-content: center; align-items: center; 
+                    border-color: green; width: 50px; margin : 5px;" 
+                    class="button rounded-circle" >
+                    <i class=" rounded-circle card-img-top"
+                    style="font-size: 30px; " class="bi bi-power text-success" title="ON"> </i>       
+                </button>
+              
+        </div><br>
+        <div  class="d-flex flex-wrap-wrap  justify-content-center align-items-center" style="margin-top: -11%; " > 
+            
+            <img src="{{VentilateurSrc}}" alt="" width=100px> 
+            <img src="{{buzzerSrc}}" alt="" width=45px>   
+        </div>
+    </div>
     <div class="hist">
         <h4 class="text-primary text-center m-2">Historique de la semaine</h4>
     </div>

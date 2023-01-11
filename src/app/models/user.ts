@@ -9,3 +9,6 @@ export class User {
   imageUrl!: String;
   matricule!: String;
 }
+
+
+

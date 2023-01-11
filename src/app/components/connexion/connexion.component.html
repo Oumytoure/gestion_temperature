@@ -1,5 +1,6 @@
-<div class="ng-container">
-  <div class="row g-3 my-5">
+<body class="d-flex">
+ <div class="ng-container w-50 my-50">
+  <div class="row g-3 my-5 ">
     <form class="row g-3 d-flex justify-content-center" [formGroup]="formGroup" (ngSubmit)="loginUser()">
       <ng-container *ngIf="this.errMsg">
         <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
@@ -31,9 +32,10 @@
           </div>
         </div>
       </div>
-      <div class="form-group">
+      <div class="form-group" style="display: flex;  justify-content: center; align-items: center;">
         <button class="btn btn-outline-primary">Se connecter</button>
       </div>
     </form>
   </div>
 </div>
+</body>
