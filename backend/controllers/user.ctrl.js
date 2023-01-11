@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
-const authorize = require('../middlewares/auth')
+const authorize = require('../authentification/auth')
 mongoose = require('mongoose')
 
 // Inscription
