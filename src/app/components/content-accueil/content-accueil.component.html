@@ -33,36 +33,62 @@
 </div>
 
 <div class="d-flex justify-content-center">
-    <div class="ends">
+    <div class="ctrl">
         <h4 class="text-primary text-center m-2">Contrôle du système</h4>
-        <div class="d-flex justify-content-center" style="margin-top: -3%;">
-            
-                <!-- button OFF -->
-                <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)"
-                    style="display: flex; justify-content: center; align-items: center;
-                    border-color: red; width: 50px; margin : 5px;"
-                    class="button rounded-circle">
-                    <i class="bg-white rounded-circle card-img-top"
-                     style="font-size: 30px;" class="bi bi-power text-danger" title="OFF"></i>    
-                </button>
-              
-                <!-- button On -->
-                <button *ngFor="let imageButton of imageButtonOn;" (click)="onClick(imageButton)"
-                    style="display: flex; justify-content: center; align-items: center; 
-                    border-color: green; width: 50px; margin : 5px;" 
-                    class="button rounded-circle" >
-                    <i class=" rounded-circle card-img-top"
-                    style="font-size: 30px; " class="bi bi-power text-success" title="ON"> </i>       
-                </button>
-              
-        </div><br>
-        <div  class="d-flex flex-wrap-wrap  justify-content-center align-items-center" style="margin-top: -11%; " > 
-            
-            <img src="{{VentilateurSrc}}" alt="" width=100px> 
-            <img src="{{buzzerSrc}}" alt="" width=45px>   
+        <div class="d-flex" style="margin-top: -3%; justify-content: space-around;">
+            <button (click)="onVentillateur()" class="button rounded-circle" 
+            style="display: flex; flex-direction: column; border-color: green; width: 60px; height: 60px;">
+                <i style="font-size: 30px; margin-left: 6px;" class="bi bi-power text-success"></i>
+                <span style="margin-top: -13px; margin-left: 8px;" class="text-success">ON</span>
+            </button>
+            <button (click)="offVentillateur()" class="button rounded-circle" 
+            style="display: flex; flex-direction: column; border-color: red; width: 60px; height: 60px;">
+                <i style="font-size: 30px; margin-left: 6px;" class="bi bi-power text-danger"></i>
+                <span style="margin-top: -13px; margin-left: 7px;" class="text-danger">OFF</span>
+            </button>
+        </div>
+        <div  class="d-flex justify-content-center" style="margin-top: -11%;"> 
+            <img *ngIf="off" class="img1" src="../../../assets/ventillateurOff.png" alt="">
+            <img *ngIf="on" class="img2" src="../../../assets/ventillateurOn.gif" alt="">
         </div>
     </div>
     <div class="hist">
         <h4 class="text-primary text-center m-2">Historique de la semaine</h4>
+        <table class="table table-bordered my-5">
+            <thead>
+              <tr>
+                <th scope="col"><i class="bi bi-calendar-check"></i> Jours</th>
+                <th scope="col">Lundi</th>
+                <th scope="col">Mardi</th>
+                <th scope="col">Mercredi</th>
+                <th scope="col">Jeudi</th>
+                <th scope="col">Vendredi</th>
+                <th scope="col">Samedi</th>
+                <th scope="col">Dimanche</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><i class="bi bi-thermometer-half"></i> Température</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="bi bi-droplet-half"></i> Humidité</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>

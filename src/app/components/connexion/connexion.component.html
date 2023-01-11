@@ -30,12 +30,12 @@
             Le mot de passe est requis
           </div>
           <div *ngIf="submitted && formGroup.controls['password'].errors['minlength']">
-            Le mot de passe doit contenir 8 caractères
+            6 caractères au minimum
           </div>
         </div>
       </div>
-      <div class="form-group" style="display: flex;  justify-content: center; align-items: center;">
-        <button class="btn btn-outline-primary">Se connecter</button>
+      <div class="form-group">
+        <button class="btn btn-primary w-100">Se connecter</button>
       </div>
     </form>
   </div>
