@@ -16,7 +16,7 @@
         </div>
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)"><i class="bi bi-pen"></i> Modifier</button>
     </div>
-    <a class="text-primary" style="margin-left: 50px;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >Changer le mot de passe?</a>>
+    <h4><a class="text-primary" style="margin-left: 50px;text-decoration: underline;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >Changer le mot de passe?</a></h4>
    <!--  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         Link with href
       </a> -->
@@ -79,40 +79,27 @@
       
     </div>
   </div>
-</div>
-
-<!-- <div class="m-5 p-3 profile ">
+</div>    
+ 
+      <div class="collapse profile " id="collapseExample">
+        <div class="card card-body">
+           <div class="m-5 p-3  ">
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
             <label for="mot_pass" class="col-3" name="mot_pass">Ancien</label>
             <input type="text" formControlName="prenom" class="form-control mb-3 " >
-            <h6> prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p>
         </div>
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
             <label for="mot_pass" class="col-3" name="mot_pass">Nouveau</label>
             <input type="text" formControlName="prenom" class="form-control mb-3">
-            <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p>
         </div>
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
             <label for="mot_pass" class="col-3" name="mot_pass">Confirmation</label>
             <input type="text" formControlName="prenom" class="form-control  mb-2">
-             <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p> 
         </div>
      
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)"><i class="bi bi-pen"></i> Modifier</button>
-    </div> -->
-
-    <p>
-        <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Link with href
-        </a>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Button with data-target
-        </button>
-      </p>
-      <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
+    </div>    
+ </div>
       </div>
 
