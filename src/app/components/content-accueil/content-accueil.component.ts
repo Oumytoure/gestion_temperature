@@ -7,10 +7,12 @@ import { Component } from '@angular/core';
 })
 export class ContentAccueilComponent {
 //
-imageSrc ="../../../assets/ventillateurOff.png";
+VentilateurSrc ="../../../assets/ventillateurOff.png";
+buzzerSrc = "../../../assets/buzzerOff.png";
 //
-imageButtons = [ {src:'../../../assets/ventillateurOff.png'}];
-imageButtonOn = [  {src:'../../../assets/ventillateurOn.gif'}];
+imageButtons = [ {src:'../../../assets/ventillateurOff.png', src1:"../../../assets/buzzerOff.png"}];
+imageButtonOn = [  {src:'../../../assets/ventillateurOn.gif', src1:"../../../assets/buzzerOn.gif"}];
+
 //
 constructor() { }
 ngOnInit() {
@@ -18,8 +20,11 @@ ngOnInit() {
 }
 //
 onClick(imageNameObject: {
-  src: string
+  src: string,
+  src1: string
 }) {
-  this.imageSrc = imageNameObject.src
+  this.VentilateurSrc = imageNameObject.src,
+  this.buzzerSrc = imageNameObject.src1
+
 }
 }

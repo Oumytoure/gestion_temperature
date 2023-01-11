@@ -41,7 +41,7 @@
                 <button *ngFor="let imageButton of imageButtons;" (click)="onClick(imageButton)"
                     style="display: flex; justify-content: center; align-items: center;
                     border-color: red; width: 50px; margin : 5px;"
-                     class="button rounded-circle">
+                    class="button rounded-circle">
                     <i class="bg-white rounded-circle card-img-top"
                      style="font-size: 30px;" class="bi bi-power text-danger" title="OFF"></i>    
                 </button>
@@ -50,16 +50,16 @@
                 <button *ngFor="let imageButton of imageButtonOn;" (click)="onClick(imageButton)"
                     style="display: flex; justify-content: center; align-items: center; 
                     border-color: green; width: 50px; margin : 5px;" 
-                     class="button rounded-circle" >
+                    class="button rounded-circle" >
                     <i class=" rounded-circle card-img-top"
                     style="font-size: 30px; " class="bi bi-power text-success" title="ON"> </i>       
                 </button>
               
         </div><br>
-        <div  class="d-flex justify-content-center" style="margin-top: -11%; " > 
+        <div  class="d-flex flex-wrap-wrap  justify-content-center align-items-center" style="margin-top: -11%; " > 
             
-            <img src="{{imageSrc}}" alt="" width=100px>
-            
+            <img src="{{VentilateurSrc}}" alt="" width=100px> 
+            <img src="{{buzzerSrc}}" alt="" width=45px>   
         </div>
     </div>
     <div class="hist">
