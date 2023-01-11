@@ -18,6 +18,7 @@ import { Router } from "@angular/router";
      // Recuperer tous les utilisateurs
     GetUsers() {
         return this.http.get(`${this.endpoint}`);
+  
     }
   
     // Recuperer un utilisateur

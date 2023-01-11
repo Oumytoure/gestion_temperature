@@ -5,6 +5,8 @@
 p{
     margin-top: -3px;
 }
-.btn{
-    margin-left: 87%;
+.profile{
+    background-color: #fff;
+    border-radius: 5px;
+    width: 750px;
 }
