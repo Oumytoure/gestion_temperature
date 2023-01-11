@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./content-accueil.component.css']
 })
 export class ContentAccueilComponent {
+  on: boolean = false;
+  off: boolean = true;
+
+  public onVentillateur():void{
+    this.on = true;
+    this.off = false;
+  }
 //
 VentilateurSrc ="../../../assets/ventillateurOff.png";
 buzzerSrc = "../../../assets/buzzerOff.png";
@@ -27,4 +34,8 @@ onClick(imageNameObject: {
   this.buzzerSrc = imageNameObject.src1
 
 }
+  public offVentillateur():void{
+    this.on = false;
+    this.off = true;
+  }
 }

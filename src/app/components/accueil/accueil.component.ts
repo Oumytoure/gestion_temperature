@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,6 +15,7 @@ export class AccueilComponent {
   showActifs: boolean = false;
   showArchive: boolean = false;
   showInscription: boolean = false;
+  showProfil: boolean = false;
 
   constructor(public authService: AuthService,
               private activatedRoute: ActivatedRoute,
@@ -36,23 +37,34 @@ export class AccueilComponent {
     this.showActifs = false;
     this.showArchive = false;
     this.showInscription = false;
+    this.showProfil = false
   }
   public affiche2():void {
     this.showAcceuil = false;
     this.showActifs = true;
     this.showArchive = false;
     this.showInscription = false;
+    this.showProfil = false
   }
   public affiche3():void {
     this.showAcceuil = false;
     this.showActifs = false;
     this.showArchive = true;
     this.showInscription = false;
+    this.showProfil = false
   }
   public affiche4():void {
     this.showAcceuil = false;
     this.showActifs = false;
     this.showArchive = false;
     this.showInscription = true;
+    this.showProfil = false
+  }
+  public affiche5():void {
+    this.showAcceuil = false;
+    this.showActifs = false;
+    this.showArchive = false;
+    this.showInscription = false;
+    this.showProfil = true
   }
 }

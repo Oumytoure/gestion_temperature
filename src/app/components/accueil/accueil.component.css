@@ -1,6 +1,6 @@
 body{
     background-color: #E4F2F6;
-    height: 800px;
+    height: 1000px;
 }
 a{
     text-decoration: none;
@@ -25,7 +25,7 @@ img{
 .btn-link, h5, .bi-house-fill{
     color: #fff;
 }
-.bi{
+.bi-person-check, .bi-person-x, .bi-plus-circle, .bi-house-fill, .bi-gear-fill{
     margin-left: 25%;
     margin-top: 10%;
     color: #fff;
