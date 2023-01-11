@@ -31,13 +31,13 @@
               <td>{{ donnee.email }}</td>
               <td>{{ donnee.role }}</td>
               <td *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'">
-                <button class="btn link" (click)="archiver(donnee._id, donnee.etat)">
+                <button title="Archiver" class="btn link" (click)="archiver(donnee._id, donnee.etat)">
                   <i class="bi bi-arrow-down-square"></i>
                 </button>
-                <button class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
+                <button title="Modifier" class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
                   <i class="bi bi-pencil-square"></i>
                 </button>
-                <button class="btn link" (click)="switcher(donnee._id, donnee.role)">
+                <button title="Switch" class="btn link" (click)="switcher(donnee._id, donnee.role)">
                   <i class="bi bi-arrow-left-right" ></i>
                 </button>
               </td>
