@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
     endpoint: string = 'http://localhost:4000/api';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     currentUser = {};
+    httpClient: any;
 
     constructor(private http: HttpClient, public router: Router) {}
   
@@ -39,6 +40,27 @@ import { Router } from "@angular/router";
         .put(API_URL, data, { headers: this.headers })
         .pipe(catchError(this.handleError));
     }
+    //Update mdp
+    updatePassword(id: any, data: any): Observable<any> {
+      console.log(id);
+  
+      console.log(data);
+  
+      let API_URL = `${this.endpoint}/update1/${id}`;
+  
+      return this.http.patch(`${this.endpoint}/update1/${id}`, 
+      {"actuelPass": data.actuelPass,
+    "newPass":data.newPass})
+    }
+  
+    /*  */
+   /*  update1User(id: any, data: any):Observable<any>{
+      let API_URL = `${this.endpoint}/update1-user/${id}`;
+      return this.http.
+      put(API_URL, data, { headers: this.headers })
+      .pipe(catchError(this.handleError));
+
+    } */
 
     // Ajouter un utilisateur
     addUser(prenom: string, nom: string, email: string, role: string, password: string, etat: boolean, matricule: String): Observable<any> {

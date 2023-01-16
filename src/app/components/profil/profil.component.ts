@@ -1,9 +1,11 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators ,} from '@angular/forms';
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
+import { ThisReceiver } from '@angular/compiler';
+import { MustMatch } from 'src/app/must-match.validator';
 
 @Component({
   selector: 'app-profil',
@@ -11,15 +13,22 @@ import Swal from 'sweetalert2';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit{
-  currentUser: any = {};
+/* onUpdate1() {
+throw new Error('Method not implemented.');
+} */
+
+currentUser: any = {};
 filterTerm!: string;
 Users: any = [];
 user: any;
 totalLenght: any;
-
+registerForm!: FormGroup;
 formGroup!: FormGroup;
 submitted = false;
 errMsg:any = true;
+userCollection: any;
+  
+  pass!: string;
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -40,6 +49,19 @@ errMsg:any = true;
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       email: ['', [Validators.required, Validators.email]]
     })
+
+      //controle de saisi modif mot de passe
+     this.registerForm = this.formBuilder.group({
+      actuelPass:['', [Validators.required, Validators.minLength(6)],],
+      newPass:['', [Validators.required, Validators.minLength(6)],],
+      confirmdp:['', [Validators.required],]
+    }, { validator: MustMatch('newPass', 'confirmdp') }
+    );
+
+  /*  this.registerForm.valueChanges.subscribe((data) => {
+    console.log(data);
+    
+   }) */
   }
 
   ngOnInit(): void {
@@ -59,7 +81,10 @@ errMsg:any = true;
         prenom: [prenom, [Validators.required, UsernameValidator.cannotContainSpace]],
         nom: [nom, [Validators.required, UsernameValidator.cannotContainSpace]],
         email: [email, [Validators.required, Validators.email]],
+
       });
+       
+      
   }
 
   onUpdate(){
@@ -67,13 +92,14 @@ errMsg:any = true;
   const user ={
   prenom: this.formGroup.value.prenom,
   nom : this.formGroup.value.nom,
-  email: this.formGroup.value.email
+  email: this.formGroup.value.email,
+ 
   }
   this.submitted = true;
   if(this.formGroup.invalid){
    return;
   }
-    this.authService.updateUser(id, user).subscribe(
+  this.authService.updateUser(id, user).subscribe(
       data=>{
         this.ngOnInit();
         Swal.fire({
@@ -88,5 +114,53 @@ errMsg:any = true;
         this.errMsg = false
         setTimeout(()=>{ this.errMsg = true}, 2000);
       });
+      
   }
+  update1User(){
+ //modification paseword
+ const id =  this.registerForm.value.id;    
+ const userCollection={
+  actuelPass: this.registerForm.value.actuelPass,
+   newPass: this.registerForm.value.newPass,
+  confirmdp: this.registerForm.value.confirmdp 
+}
+
+this.submitted = true;
+if(this.registerForm.invalid){
+  console.log(this.registerForm.errors);
+  
+ return;
+}
+/* aa */
+return this.authService.updatePassword(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
+  alert("modifié ")
+this.authService.doLogout()
+},
+(err)=>{
+    this.pass="erreur";
+})
+/* aa */
+/* 
+ this.authService.updateUser(id, userCollection).subscribe(
+data=>{
+
+  this.ngOnInit();
+  
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Modification  mot de passe réussi !',
+    showConfirmButton: false,
+    timer: 1500
+  });window.setTimeout(function(){location.reload()},1000)
+},
+error => {
+  this.errMsg = false
+  setTimeout(()=>{ this.errMsg = true}, 2000);
+}); */
+// this.user.findOne({password: 'password'})
+//
+
+  } 
+ 
 }
