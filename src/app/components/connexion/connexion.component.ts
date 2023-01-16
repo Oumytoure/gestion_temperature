@@ -13,13 +13,14 @@ export class ConnexionComponent implements OnInit {
   submitted = false;
   errMsg: any;
 
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ){
     this.formGroup = this.formBuilder.group({
-      email:['', [Validators.required, Validators.email]],
+      email:['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
       password:['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -36,7 +37,7 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.login(this.formGroup.value).subscribe((res: any) => {
       localStorage.setItem('access_token', res.token);
-  
+      localStorage.setItem('id', res.id);
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
         this.router.navigate(['user-profil/' + res.msg._id]);

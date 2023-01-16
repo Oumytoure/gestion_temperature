@@ -15,6 +15,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ContentAccueilComponent } from './components/content-accueil/content-accueil.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { registerLocaleData } from '@angular/common';
 
 
 

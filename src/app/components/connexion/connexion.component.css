@@ -1,18 +1,16 @@
 
+ #intro {
+        background-image: url(https://cdn.discordapp.com/attachments/1054342024880472086/1054743835550429184/nature.jpeg);
+        height: 120vh;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: relative;
+        
+      }
 
-
-#intro {
-    background-image: url(https://cdn.discordapp.com/attachments/1054342024880472086/1054743835550429184/nature.jpeg);
-    height: 120vh;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    position: relative;
-    
-  }
-
-  /* Height for devices larger than 576px */
-  @media (min-width: 992px) {
-    #intro {
-      margin-top: -58.59px;
-    }
-  }
+      /* Height for devices larger than 576px */
+      @media (min-width: 992px) {
+        #intro {
+          margin-top: -58.59px;
+        }
+      }
