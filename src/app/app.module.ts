@@ -18,6 +18,8 @@ import { ProfilComponent } from './components/profil/profil.component';
 
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +31,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     ContentAccueilComponent,
     HeaderComponent,
     ProfilComponent,
+   
+  
   
   ],
   imports: [

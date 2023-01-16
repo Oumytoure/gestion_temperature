@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
+import { MustMatch } from 'src/app/must-match.validator';
 
 @Component({
   selector: 'app-profil',
@@ -16,10 +17,10 @@ filterTerm!: string;
 Users: any = [];
 user: any;
 totalLenght: any;
-
 formGroup!: FormGroup;
 submitted = false;
 errMsg:any = true;
+
 
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -34,15 +35,20 @@ errMsg:any = true;
        this.currentUser = res.msg;
 
      });
-
+    
      this.formGroup = this.formBuilder.group({
       prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
-      email: ['', [Validators.required, Validators.email]]
-    })
+      email: ['', [Validators.required, Validators.email]],
+       
+     
+   
+    });
+   
   }
 
   ngOnInit(): void {
+    
     this.authService.GetUsers().subscribe(
       data =>{
         this.user = data;
@@ -60,6 +66,9 @@ errMsg:any = true;
         nom: [nom, [Validators.required, UsernameValidator.cannotContainSpace]],
         email: [email, [Validators.required, Validators.email]],
       });
+
+    
+   
   }
 
   onUpdate(){
@@ -73,6 +82,7 @@ errMsg:any = true;
   if(this.formGroup.invalid){
    return;
   }
+  
     this.authService.updateUser(id, user).subscribe(
       data=>{
         this.ngOnInit();
@@ -88,5 +98,7 @@ errMsg:any = true;
         this.errMsg = false
         setTimeout(()=>{ this.errMsg = true}, 2000);
       });
-  }
+
+        }
+
 }

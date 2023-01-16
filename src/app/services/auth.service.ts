@@ -9,9 +9,11 @@ import { Router } from "@angular/router";
     providedIn: 'root',
   })
   export class AuthService {
+    [x: string]: any;
     endpoint: string = 'http://localhost:4000/api';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     currentUser = {};
+  
 
     constructor(private http: HttpClient, public router: Router) {}
   
@@ -86,6 +88,7 @@ import { Router } from "@angular/router";
         catchError(this.handleError)
       );
     }
+
     
     // Error
     handleError(error: HttpErrorResponse) {

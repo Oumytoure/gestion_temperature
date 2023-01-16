@@ -26,7 +26,7 @@ export class InscriptionComponent {
     this.formGroup = this.formBuilder.group({
       prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$')]],
       role: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       passwordConfirm: ['', Validators.required],

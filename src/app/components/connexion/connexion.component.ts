@@ -36,6 +36,7 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.login(this.formGroup.value).subscribe((res: any) => {
       localStorage.setItem('access_token', res.token);
+  
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
         this.router.navigate(['user-profil/' + res.msg._id]);
