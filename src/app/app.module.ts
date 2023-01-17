@@ -27,8 +27,9 @@ import { ProfilComponent } from './components/profil/profil.component';
     AccueilComponent,
     ContentAccueilComponent,
     HeaderComponent,
-    ProfilComponent
+    ProfilComponent,
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

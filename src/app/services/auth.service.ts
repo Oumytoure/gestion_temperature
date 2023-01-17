@@ -9,15 +9,18 @@ import { Router } from "@angular/router";
     providedIn: 'root',
   })
   export class AuthService {
+    [x: string]: any;
     endpoint: string = 'http://localhost:4000/api';
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     currentUser = {};
+    httpClient: any;
 
     constructor(private http: HttpClient, public router: Router) {}
   
      // Recuperer tous les utilisateurs
     GetUsers() {
         return this.http.get(`${this.endpoint}`);
+  
     }
   
     // Recuperer un utilisateur
@@ -37,6 +40,18 @@ import { Router } from "@angular/router";
         return this.http
         .put(API_URL, data, { headers: this.headers })
         .pipe(catchError(this.handleError));
+    }
+    //Update mdp
+    updatePassword(id: any, data: any): Observable<any> {
+      console.log(id);
+  
+      console.log(data);
+  
+      let API_URL = `${this.endpoint}/update1/${id}`;
+  
+      return this.http.patch(`${this.endpoint}/update1/${id}`, 
+      {"actuelPass": data.actuelPass,
+    "newPass":data.newPass})
     }
 
     // Ajouter un utilisateur
@@ -85,6 +100,7 @@ import { Router } from "@angular/router";
         catchError(this.handleError)
       );
     }
+
     
     // Error
     handleError(error: HttpErrorResponse) {

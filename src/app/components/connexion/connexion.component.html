@@ -1,40 +1,60 @@
-<body>
-  <div style="text-align: center;">  <img src="../../../assets/nature.jpeg" alt=""></div>
-  <div class="container">
-    <form class="row g-3 p-3 d-flex justify-content-center" [formGroup]="formGroup" (ngSubmit)="loginUser()">
-      <ng-container *ngIf="this.errMsg">
-        <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
-      </ng-container>
-      <h3 class="text-center text-primary m-5">Page de connexion</h3>
-      <div class="form-group inputs">
-        <label for="email">Addresse Email</label>
-        <input [ngClass]="{'is-invalid':submitted && formGroup.controls['email'].errors}" formControlName="email"
-          type="email" class="form-control">
-        <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
-          <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
-            L' email est requis
-          </div>
-          <div *ngIf="submitted && formGroup.controls['email'].errors['email']">
-            L'email n'est pas valide
-          </div>
+<!-- Background image -->
+<div id="intro" class="bg-image shadow-2-strong">
+  <div class="mask d-flex align-items-center h-100">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-md-8">
+          <form class="bg-white  rounded-5 shadow-5-strong p-5" [formGroup]="formGroup" (ngSubmit)="loginUser()">
+            <ng-container *ngIf="this.errMsg">
+              <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{errMsg}}</div>
+            </ng-container>
+            <h3 class="text-center text-primary m-5">Page de connexion</h3>
+            <!-- Email input -->
+            <div class="form-outline mb-4 form-group inputs">
+              <label class="form-label" for="form1Example1">Adresse email</label>
+              <input type="email" id="form1Example1" class="form-control" formControlName="email" />
+              <div
+                *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required"
+                class="text-danger">
+                L' email est requis
+              </div>
+              <div
+                *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern"
+                class="text-danger">
+                email est invalide
+              </div>
+            </div>
+            <!-- Password input -->
+            <div class="form-outline mb-4 form-group inputs">
+              <label class="form-label" for="password">Mot de passe</label>
+              <input type="password" id="form1Example2" class="form-control" formControlName="password" />
+              <div
+                *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors&&formGroup.controls.password.errors.required"
+                class="text-danger">
+                Mot de passe requis
+              </div>
+              <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" class="text-danger">
+                Minimum 6 caractères
+              </div>
+            </div>
+            <div class="form-group mb-4">
+                <!-- Checkbox -->
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
+                  <label class="form-check-label" for="form1Example3">
+                    Remember me
+                  </label>
+                </div>
+              <div class="col text-center">
+              </div>
+            </div>
+            <!-- Submit button -->
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            </div>
+          </form>
         </div>
       </div>
-      <div class="form-group inputs">
-        <label for="password">Mot de passe</label>
-        <input [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}" formControlName="password"
-          type="password" class="form-control">
-        <div *ngIf="submitted && formGroup.controls['password'].errors" class="text-danger">
-          <div *ngIf="submitted && formGroup.controls['password'].errors['required']">
-            Le mot de passe est requis
-          </div>
-          <div *ngIf="submitted && formGroup.controls['password'].errors['minlength']">
-            6 caractères au minimum
-          </div>
-        </div>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary w-100">Se connecter</button>
-      </div>
-    </form>
+    </div>
   </div>
-</body>
+</div>

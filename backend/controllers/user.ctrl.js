@@ -36,6 +36,43 @@ router.post('/add-user', (req, res, next) => {
       })
   },
 )
+//modif mdp
+router.patch('/update1/:id', async(req, res) => {
+  try {
+        let { actuelPass, newPass } = req.body;
+        const id = req.params.id;
+        const updatedData = req.body;
+        const options = { new: true };
+        let user= userSchema.findById({"_id": req.params.id});
+        if(!user){
+          return res.status(404);
+        };
+        if (updatedData.actuelPass){
+          user.then(async(e)=> {
+
+                if(await bcrypt.compare(actuelPass, e.password)){
+                    const hash = await bcrypt.hash(newPass, 10);
+                      updatedData.password = hash;
+                      const result = await userSchema.findByIdAndUpdate(
+                      id, updatedData, options
+                      );
+                    return res.send(result);
+                }
+                return res.send('no corres');
+          });
+
+      }else{
+        const result = await userSchema.findByIdAndUpdate(
+              id, updatedData, options
+          )
+          return res.send(result)
+      }
+  }
+  catch (error) {
+      res.status(400).json({ message: error.message })
+  }
+})
+ 
 
 // Connexion
 router.post('/login', (req, res, next) => {
@@ -139,5 +176,6 @@ router.route('/update-user/:id').put((req, res, next) => {
     },
   )
 })
+
 
 module.exports = router
