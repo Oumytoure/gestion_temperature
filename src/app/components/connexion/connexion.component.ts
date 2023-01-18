@@ -40,7 +40,7 @@ export class ConnexionComponent implements OnInit {
       localStorage.setItem('id', res.id);
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
-        this.router.navigate(['user-profil/' + res.msg._id]);
+        this.router.navigate(['user-profil/:id' + res.msg._id]);
       });
     }, // Intercepter les messages d'erreurs du serveur
     error => {
@@ -48,4 +48,13 @@ export class ConnexionComponent implements OnInit {
       console.log(error.error.message)
     });
   }
+
+  
+}
+function chState(element: { checked: any; value: string; })
+{
+    if(element.checked) 
+        element.value='true'; 
+   else
+       element.value='false';
 }

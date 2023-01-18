@@ -30,9 +30,20 @@
                 <!-- Password input -->
                 <div class="form-outline mb-4 form-group inputs">
                   <label class="form-label" for="password">Password</label>
+                  
                   <input 
                    type="password" id="form1Example2" class="form-control" formControlName="password" />
+                  <!--  <div class="password-icon">
+                    <i data-feather="eye"></i>
+                    <i data-feather="eye-off"></i>
+                  </div>
                    
+                  <script src="https://unpkg.com/feather-icons"></script>
+                     <script>
+                   feather.replace();
+                       </script> -->
+                
+
                     <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors&&formGroup.controls.password.errors.required" class="text-danger">
                        password requis 
                      </div>
@@ -47,7 +58,7 @@
                   <div class="col d-flex justify-content-center">
                     <!-- Checkbox -->
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                      <input class="form-check-input" type="checkbox" value="false" id="form1Example3" onchange="this.value=this.checked" />
                       <label class="form-check-label" for="form1Example3">
                         Remember me
                       </label>
@@ -69,7 +80,6 @@
         </div>
       </div>
     </div>
-
 
 
   

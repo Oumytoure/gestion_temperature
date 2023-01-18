@@ -41,7 +41,7 @@ import { Router } from "@angular/router";
         .pipe(catchError(this.handleError));
     }
     //Update mdp
-    updatePassword(id: any, data: any): Observable<any> {
+    update1User(id: any, data: any): Observable<any> {
       console.log(id);
   
       console.log(data);
@@ -100,7 +100,7 @@ import { Router } from "@angular/router";
 
     // User profile
     getUserProfile(id: any): Observable<any> {
-      let api = `${this.endpoint}/user-profile/${id}`;
+      let api = `${this.endpoint}/user-profil/${id}`;
       return this.http.get(api, { headers: this.headers }).pipe(
         map((res) => {
           return res || {};

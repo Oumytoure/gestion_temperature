@@ -127,12 +127,12 @@ userCollection: any;
 
 this.submitted = true;
 if(this.registerForm.invalid){
-  console.log(this.registerForm.errors);
+   console.log(this.registerForm.errors); 
   
- return;
+ return
 }
 /* aa */
-return this.authService.updatePassword(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
+return this.authService.update1User(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
   alert("modifié ")
 this.authService.doLogout()
 },

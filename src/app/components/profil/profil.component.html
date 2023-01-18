@@ -75,7 +75,7 @@
       <div class="collapse profile " id="collapseExample">
         <div class="card card-body">
            <div class="m-5 p-3  ">
-        <form [formGroup]="registerForm" (ngSubmit)=" update1User()">
+        <form [formGroup]="registerForm" (ngSubmit)="update1User()">
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
 
@@ -83,7 +83,7 @@
               <div>
                 <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
                 
-                <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
+                <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.required" class="text-danger">
                   password requis 
                 </div>
                 <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors" class="text-danger">
@@ -98,7 +98,7 @@
             <label for="newPass" class="col-3 mt-3" name="newPass" >Nouveau</label>
             <div>
             <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1">
-            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
+            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.required" class="text-danger">
               password requis 
             </div>
             <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors" class="text-danger">
@@ -112,10 +112,10 @@
             <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
             <div>
             <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
-            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
+            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.required" class="text-danger">
               Les mots de passes ne correspondent pas
             </div>
-            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
+            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
              password incorrecte
             </div>
           
