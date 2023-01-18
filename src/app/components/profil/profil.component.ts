@@ -31,7 +31,6 @@ userCollection: any;
   pass!: string;
 
 
-
   constructor(private activatedRoute: ActivatedRoute,
     private router: Router,
     private ngZone: NgZone,
@@ -44,7 +43,7 @@ userCollection: any;
        this.currentUser = res.msg;
 
      });
-    
+
      this.formGroup = this.formBuilder.group({
       prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
@@ -66,7 +65,6 @@ userCollection: any;
   }
 
   ngOnInit(): void {
-    
     this.authService.GetUsers().subscribe(
       data =>{
         this.user = data;
@@ -134,7 +132,7 @@ if(this.registerForm.invalid){
  return;
 }
 /* aa */
-return this.authService.updatePassword(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
+return this.authService.update1User(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
   alert("modifié ")
 this.authService.doLogout()
 },

@@ -81,7 +81,7 @@ router.patch('/update1/:id', async(req, res) => {
       res.status(400).json({ message: error.message })
   }
 })
- /* router.put('/update1/:id').get((req, res, next) => {
+ router.put('/update1/:id').get((req, res, next) => {
 let user = userSchema
     .findOne({
       id: req.params.id
@@ -110,7 +110,7 @@ let user = userSchema
       )
     })
 
-  })  */
+  }) 
       
       /* user.save()
       .then((response) => {
