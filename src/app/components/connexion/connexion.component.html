@@ -30,7 +30,7 @@
                   <label class="form-label" for="password">Password</label>
                   <input type="password" id="form1Example2" class="form-control" formControlName="password" />
         
-                    <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors&&formGroup.controls.password.errors.required" class="text-danger">
+                    <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.required" class="text-danger">
                        password requis 
                      </div>
                      <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors  && formGroup.controls.password.errors.minlength" class="text-danger">

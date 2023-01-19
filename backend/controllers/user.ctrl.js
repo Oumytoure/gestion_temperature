@@ -90,9 +90,7 @@ let user = userSchema
     return bcrypt.compare(req.body.password, user.password)
     .then((response) => {
       if (!response) {
-        return res.status(401).json({
-          message: 'Le mot de passe est incorrect !',
-        }) 
+        return;
       }
       userSchema.findByIdAndUpdate(
         user.id,
@@ -111,21 +109,7 @@ let user = userSchema
     })
 
   }) 
-      
-      /* user.save()
-      .then((response) => {
-        console.log(response);
-        res.status(201).json({
-          message: 'Enregistrement validé !',
-          result: response,
-        })
-      }) */
-/* })
-
-}) */ 
-//
-
-
+    
 
 // Connexion
 router.post('/login', (req, res, next) => {

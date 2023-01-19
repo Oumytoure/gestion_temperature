@@ -22,7 +22,8 @@ export class AccueilComponent {
               private router: Router) {
 
      // Recuperer les informations de l'utilisateur
-     let id = this.activatedRoute.snapshot.paramMap.get('id');
+    /*  let id = this.activatedRoute.snapshot.paramMap.get('id'); */
+    let id = localStorage.getItem('id'); 
      this.authService.getUserProfile(id).subscribe((res) => {
        this.currentUser = res.msg;
      });
