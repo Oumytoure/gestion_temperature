@@ -86,7 +86,7 @@
           <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
             password requis 
           </div>
-          <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors" class="text-danger">
+          <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.minlength" class="text-danger">
            password incorrecte
           </div> 
     
@@ -101,7 +101,7 @@
       <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
         password requis 
       </div>
-      <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors" class="text-danger">
+      <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.minlength" class="text-danger">
        password incorrecte
       </div>
      
@@ -113,10 +113,10 @@
       <div>
       <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
       <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
-        Les mots de passes ne correspondent pas
+      password requis
       </div>
-      <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
-       password incorrecte
+      <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
+        Les mots de passes ne correspondent pas
       </div>
     
       </div>
