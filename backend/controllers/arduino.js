@@ -1,10 +1,12 @@
 //var usbserial = '/dev/cu.usbmodem1451'; // Pour mon UNO et mon MEGA
 //var usbserial = '/dev/cu.usbserial-AL02VFGY'; // Pour mon NANO
 
-
+//écoute port arduino
 var usbserial = '/dev/cu.usbmodem1451';
-var usbserial = 'COM4';
+/* var usbserial = 'COM4';
+ */
 
+//import des librairies nécessaires
 var http = require('http');
 var fs = require('fs');
 var path = require("path");
@@ -18,6 +20,8 @@ function sendError(errCode, errString, response) {
   return;
 }
 
+
+//function retour sur le headers
 function sendFile(err, file, response) {
   if(err) return sendError(500, err, response);
   response.writeHead(200);
@@ -25,12 +29,15 @@ function sendFile(err, file, response) {
   response.end();
 }
 
+//attrapper les erreurs 
 function getFile(exists, response, localpath) {
   if(!exists) return sendError(404, '404 Not Found', response);
   fs.readFile(localpath, "binary",
    function(err, file){ sendFile(err, file, response);});
 }
 
+
+//obtenir le nom du fichier qu'on veit lier
 function getFilename(request, response) {
   var urlpath = url.parse(request.url).pathname; 
   var localpath = path.join(process.cwd(), urlpath); 
@@ -46,7 +53,6 @@ var io = require('socket.io');
 // -- SerialPort --
 // Chargement
 var SerialPort = require('serialport');
-
 var arduino = new SerialPort(usbserial, { 
   autoOpen: false, 
   baudRate: 9600,
@@ -72,7 +78,7 @@ arduino.open(function (err) {
 });
 
 
-// Requetes
+// Requetes de connexion
 io.sockets.on('connection', function (socket) {
 	// Message Ã  la connexion
   console.log('Connexion socket : Ok');
@@ -90,6 +96,9 @@ io.sockets.on('connection', function (socket) {
 	});
 });
 
+
+
+//recupere les donnees capteur el les afficher
 arduino.on('data', function (data) {
   let buf = new Buffer(data);
   io.sockets.emit('message', buf.toString('ascii'));
@@ -97,5 +106,5 @@ arduino.on('data', function (data) {
   //console.log(buf);
 });
 
-server.listen(4000);
+app.listen(4000);
 console.log("Serveur : Ok");
