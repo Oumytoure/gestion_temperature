@@ -127,17 +127,26 @@ userCollection: any;
 
 this.submitted = true;
 if(this.registerForm.invalid){
-   console.log(this.registerForm.errors); 
+  console.log(this.registerForm.errors);
   
- return
+ return ;
 }
 /* aa */
 return this.authService.update1User(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
-  alert("modifié ")
+ /*  alert("modifié ") */
+ this.ngOnInit();
+  
+ Swal.fire({
+   position: 'center',
+   icon: 'success',
+   title: 'Modification  mot de passe réussi !',
+   showConfirmButton: false,
+   timer: 1500
+ });
 this.authService.doLogout()
 },
 (err)=>{
-    this.pass="erreur";
+    this.pass="mot de passe actuel est incorrect ";
 })
 /* aa */
 /* 

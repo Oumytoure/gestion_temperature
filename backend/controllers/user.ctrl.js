@@ -81,7 +81,7 @@ router.patch('/update1/:id', async(req, res) => {
       res.status(400).json({ message: error.message })
   }
 })
- /* router.put('/update1/:id').get((req, res, next) => {
+ router.put('/update1/:id').get((req, res, next) => {
 let user = userSchema
     .findOne({
       id: req.params.id
@@ -90,9 +90,7 @@ let user = userSchema
     return bcrypt.compare(req.body.password, user.password)
     .then((response) => {
       if (!response) {
-        return res.status(401).json({
-          message: 'Le mot de passe est incorrect !',
-        }) 
+        return;
       }
       userSchema.findByIdAndUpdate(
         user.id,
@@ -110,22 +108,8 @@ let user = userSchema
       )
     })
 
-  })  */
-      
-      /* user.save()
-      .then((response) => {
-        console.log(response);
-        res.status(201).json({
-          message: 'Enregistrement validé !',
-          result: response,
-        })
-      }) */
-/* })
-
-}) */ 
-//
-
-
+  }) 
+    
 
 // Connexion
 router.post('/login', (req, res, next) => {
@@ -229,5 +213,6 @@ router.route('/update-user/:id').put((req, res, next) => {
     },
   )
 })
+
 
 module.exports = router
