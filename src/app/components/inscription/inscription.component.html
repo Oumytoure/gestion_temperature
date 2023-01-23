@@ -39,15 +39,6 @@
             <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern" class="text-danger">
                 email est invalide
                </div>
-
-           <!--  <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
-                <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
-                    Le mail est obligatoire!
-                </div>
-                <div *ngIf="submitted && formGroup.controls['email'].errors['email']">
-                    Le mail n'est pas valide!'
-                </div>
-            </div> -->
         </div>
         <div class="col-md-6">
             <label for="role">Rôle</label>

@@ -42,7 +42,7 @@ import { Router } from "@angular/router";
         .pipe(catchError(this.handleError));
     }
     //Update mdp
-    updatePassword(id: any, data: any): Observable<any> {
+    update1User(id: any, data: any): Observable<any> {
       console.log(id);
   
       console.log(data);
