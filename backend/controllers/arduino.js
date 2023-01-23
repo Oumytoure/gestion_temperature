@@ -1,17 +1,12 @@
-//var usbserial = '/dev/cu.usbmodem1451'; // Pour mon UNO et mon MEGA
-//var usbserial = '/dev/cu.usbserial-AL02VFGY'; // Pour mon NANO
 
 //écoute port arduino
-/* var usbserial = '/dev/cu.usbmodem1451';
-var usbserial = 'COM4'; */
-var usbserial = '/dev/ttySO/';
+
+var usbserial = '/dev/ttyUSB0'
  
 
-//import des librairies nécessaires
-var http = require('http');
-var fs = require('fs');
+//import librairie
 var path = require("path");
-var url = require("url");
+
 
 // Gestion des pages HTML
 function sendError(errCode, errString, response) {
@@ -59,9 +54,9 @@ var io = require('socket.io')(app);
 
 const { SerialPort } = require('serialport');
 const arduino = new SerialPort({
-path: '/dev/ttySO/',
+path: usbserial,
 autoOpen: false,
-baudRate: 115200,
+baudRate: 9600,
 
 });
 /************ IMPORTANT ********
