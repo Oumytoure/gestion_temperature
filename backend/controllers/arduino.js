@@ -2,9 +2,10 @@
 //var usbserial = '/dev/cu.usbserial-AL02VFGY'; // Pour mon NANO
 
 //écoute port arduino
-var usbserial = '/dev/cu.usbmodem1451';
-/* var usbserial = 'COM4';
- */
+/* var usbserial = '/dev/cu.usbmodem1451';
+var usbserial = 'COM4'; */
+var usbserial = '/dev/ttySO/';
+ 
 
 //import des librairies nécessaires
 var http = require('http');
@@ -48,16 +49,21 @@ function getFilename(request, response) {
 
 // -- socket.io --
 // Chargement
-var io = require('socket.io');
+
+var app = "";
+var io = require('socket.io')(app);
 
 // -- SerialPort --
 // Chargement
-var SerialPort = require('serialport');
-var arduino = new SerialPort(usbserial, { 
-  autoOpen: false, 
-  baudRate: 9600,
-});
 
+
+const { SerialPort } = require('serialport');
+const arduino = new SerialPort({
+path: '/dev/ttySO/',
+autoOpen: false,
+baudRate: 115200,
+
+});
 /************ IMPORTANT ********
 Pour fonctionner correctement, le fichier 'serialport' @ Users/node_modules/serialport/lib/serialport.js
 Ã  Ã©tÃ© modifiÃ© Ã  la ligne 32
@@ -73,7 +79,7 @@ arduino.open(function (err) {
     return console.log('Error opening port: ', err.message);
   }
   else {
-    console.log ("Communication serie Arduino 115200 bauds : Ok")
+    console.log ("Communication serie Arduino 9600 bauds : Ok")
   }
 });
 
@@ -106,5 +112,6 @@ arduino.on('data', function (data) {
   //console.log(buf);
 });
 
-app.listen(4000);
+
 console.log("Serveur : Ok");
+console.log(app);

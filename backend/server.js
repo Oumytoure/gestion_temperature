@@ -5,8 +5,19 @@ const mongoose = require('mongoose')
 
 // Express APIs
 const api = require('./controllers/user.ctrl')
-/* const api1 = require('./controllers/arduino') */
 
+
+//import arduino.js
+const api1 = require('./controllers/arduino')
+
+
+
+// Express settings
+const app = express()
+// -- socket.io --
+// Chargement
+
+/* var app = require('http').createServer(handler), */
 
 
 mongoose
@@ -18,9 +29,9 @@ mongoose
     console.error('Error connecting to mongo', err.reason)
   })
 
-// Express settings
-const app = express()
-/* var app = require('http').createServer(handler), */
+
+
+
 
 //formatage datas 
 app.use(bodyParser.json())
@@ -57,6 +68,7 @@ app.use(function (err, req, res, next) {
   if (!err.statusCode) err.statusCode = 500
   res.status(err.statusCode).send(err.message)
 })
+
 
 
 //<socket io>
