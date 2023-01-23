@@ -43,7 +43,6 @@ function getFilename(request, response) {
 
 
 // -- socket.io --
-// Chargement
 
 var app = "";
 var io = require('socket.io')(app);
