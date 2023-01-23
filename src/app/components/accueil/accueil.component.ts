@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.css']
 })
-export class AccueilComponent {
+export class AccueilComponent{
   currentUser: any = {};
   showAcceuil:boolean = true;
   showActifs: boolean = false;
   showArchive: boolean = false;
   showInscription: boolean = false;
   showProfil: boolean = false;
+
 
   constructor(public authService: AuthService,
               private activatedRoute: ActivatedRoute,
