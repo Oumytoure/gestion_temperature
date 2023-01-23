@@ -1,130 +1,145 @@
-    <div class="m-5 p-3 profil">
-        <div class="d-flex">
-            <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p>
-        </div>
-        <div class="d-flex">
-            <h6> Nom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.nom }}</p>
-        </div>
-        <div class="d-flex">
-            <h6> Rôle : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.role }}</p>
-        </div>
-        <div class="d-flex">
-            <h6> Matricule : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.matricule }}</p>
-        </div>
-        <div class="d-flex">
-            <h6> Email : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.email }}</p>
-        </div>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap" (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)"><i class="bi bi-pen"></i> Modifier</button>
-    </div>
-    <h4><a class="text-primary" style="margin-left: 50px;text-decoration: underline;" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" >Changer le mot de passe?</a></h4>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="m-5 p-3 profil">
+  <div class="d-flex">
+    <h6> Prenom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.prenom }}</p>
+  </div>
+  <div class="d-flex">
+    <h6> Nom : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.nom }}</p>
+  </div>
+  <div class="d-flex">
+    <h6> Rôle : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.role }}</p>
+  </div>
+  <div class="d-flex">
+    <h6> Matricule : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.matricule }}</p>
+  </div>
+  <div class="d-flex">
+    <h6> Email : </h6> &nbsp; &nbsp; <p> {{ this.currentUser.email }}</p>
+  </div>
+  <button style="margin-left: auto;" type="button" class="btn btn-primary d-flex" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap"
+    (click)="getUserData(currentUser._id,currentUser.prenom,currentUser.nom,currentUser.email)">
+    <i class="bi bi-pen"></i> &nbsp; Modifier
+  </button>
+</div>
+
+<h5  style="margin-left: 50px;margin-top: -3%">
+  <a class="text-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Changer le mot de passe ?</a>
+</h5>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title " id="exampleModalLabel " >MODIFICCATION PROFIL</h5>
+        <h5 class="modal-title " id="exampleModalLabel ">MODIFICCATION PROFIL</h5>
       </div>
       <div class="modal-body">
         <div *ngIf="!errMsg" class="alert alert-danger" role="alert">
-            <strong> Erreur </strong> Email déjà existant !
-          </div>
+          <strong> Erreur </strong> Email déjà existant !
+        </div>
         <form [formGroup]="formGroup" (ngSubmit)="onUpdate()">
-            <label for='prenom'>Prenom</label>
-            <input type="text" formControlName="prenom" class="form-control">
-            <div *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.required" class="text-danger">
-              Le nom est requis 
+          <label for='prenom'>Prenom</label>
+          <input type="text" formControlName="prenom" class="form-control">
+          <div
+            *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.required"
+            class="text-danger">
+            Le nom est requis
           </div>
-              <div *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.cannotContainSpace" class="text-danger">
-                  Espace non autorisé
-              </div>
-         
-            <br/>
-            <label for='nom'>Nom</label>
-            <input type="text" formControlName="nom" class="form-control">
-            <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.required" class="text-danger">
-              Le nom est requis 
+          <div
+            *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.cannotContainSpace"
+            class="text-danger">
+            Espace non autorisé
           </div>
-              <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.cannotContainSpace" class="text-danger">
-                  Espace non autorisé
-              </div>
-         
-            <br/>
-            <label for='email'>Adresse email</label>
-            <input type="email" formControlName="email" class="form-control">
-            <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required" class="text-danger">
-              L' email est requis 
-             </div>
-               <!-- <div *ngIf="formGroup.controls.email.errors.required">
-                 L' email est requis
-               </div> -->
-               <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern" class="text-danger">
-                email est invalide
-               </div>
-          
-            <br/>
-            <div class="d-flex " style="gap: 250px;" >
-                <div><button type="submit" class="btn btn-outline-primary" style="margin-left: 30px;">Valider</button></div>
-                <div><button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i style="font-size: 20px;" class="bi bi-backspace"></i></button></div>
-            </div>
-          </form>
+
+          <br />
+          <label for='nom'>Nom</label>
+          <input type="text" formControlName="nom" class="form-control">
+          <div
+            *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.required"
+            class="text-danger">
+            Le nom est requis
+          </div>
+          <div
+            *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.cannotContainSpace"
+            class="text-danger">
+            Espace non autorisé
+          </div>
+          <br />
+          <label for='email'>Adresse email</label>
+          <input type="email" formControlName="email" class="form-control">
+          <div
+            *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required"
+            class="text-danger">
+            L' email est requis
+          </div>
+          <div
+            *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern"
+            class="text-danger">
+            email est invalide
+          </div>
+          <br />
+          <div class="d-flex " style="justify-content: space-between;">
+            <div><button type="submit" class="btn btn-outline-primary">Valider</button></div>
+            <div><button type="button" class="btn btn-outline-danger" data-dismiss="modal"><i style="font-size: 20px;"
+                  class="bi bi-backspace"></i></button></div>
+          </div>
+        </form>
       </div>
-      
     </div>
   </div>
-</div>    
- 
-      <div class="collapse profile " id="collapseExample">
-        <div class="card card-body">
-           <div class="m-5 p-3  ">
-        <form [formGroup]="registerForm" (ngSubmit)="update1User()">
+</div>
+
+<div class="collapse profile m-5" id="collapseExample">
+  <div class="card card-body">
+    <div class="m-3">
+      <h5 class="mb-5 text-center">MODIFICCATION MOT DE PASSE</h5>
+      <ng-container *ngIf="this.pass">
+        <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{pass}}</div>
+      </ng-container>
+      <form [formGroup]="registerForm" (ngSubmit)=" update1User()">
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
-
-              <label for="actuelPass" class="col-3" name="actuelPass">Ancien</label>
-              <div>
-                <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
-                
-                <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.required" class="text-danger">
-                  password requis 
-                </div>
-                <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors" class="text-danger">
-                 password incorrecte
-                </div> 
-          
-            </div> 
-              </div>
-           
+          <label for="actuelPass" class="col-3" name="actuelPass">Ancien</label>
+          <div>
+            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
             
-        <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
-            <label for="newPass" class="col-3 mt-3" name="newPass" >Nouveau</label>
-            <div>
-            <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1">
-            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.required" class="text-danger">
+            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
               password requis 
             </div>
-            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors" class="text-danger">
-             password incorrecte
+            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.minlength" class="text-danger">
+             Minimun 6 caractères
+            </div> 
+          </div>
+        </div>
+        <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
+          <label for="newPass" class="col-3 mt-3" name="newPass">Nouveau</label>
+          <div>
+            <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1">
+            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
+              password requis 
             </div>
-           
+            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.minlength" class="text-danger">
+             Minimun 6 caractères
             </div>
+          </div>
         </div>
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
-            <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
-            <div>
+          <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
+          <div>
             <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
-            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.required" class="text-danger">
-              Les mots de passes ne correspondent pas
+            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
+            password requis
             </div>
             <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
-             password incorrecte
+              Les mots de passes ne correspondent pas
             </div>
-          
-            </div>
+          </div>
         </div>
-     
-        <button type="submit" class="btn btn-primary"><i class="bi bi-pen"></i> Modifier</button>
+        <button type="submit" class="btn btn-outline-primary m-3">
+          Modifier
+        </button>
       </form>
-      </div>    
- </div>
-      </div>
-
+    </div>
+  </div>
+</div>

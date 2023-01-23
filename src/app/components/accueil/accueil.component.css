@@ -7,10 +7,9 @@ a{
     color: #5BC0DE;
 }
 .navig{
-    margin-top: 50px;
     background-color: #fff;
     width: 80px;
-    height: 100%;
+    height: 1000px;
     margin-right: auto;
     position: absolute;
 }
