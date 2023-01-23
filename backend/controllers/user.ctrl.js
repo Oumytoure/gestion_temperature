@@ -72,7 +72,6 @@ router.patch('/update1/:id', async(req, res) => {
       res.status(400).json({ message: error.message })
   }
 })
- 
 
 // Connexion
 router.post('/login', (req, res, next) => {

@@ -13,14 +13,13 @@ export class ConnexionComponent implements OnInit {
   submitted = false;
   errMsg: any;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private router: Router
   ){
     this.formGroup = this.formBuilder.group({
-      email:['', [Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$')]],
+      email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -37,10 +36,11 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.login(this.formGroup.value).subscribe((res: any) => {
       localStorage.setItem('access_token', res.token);
-      localStorage.setItem('id', res.id);
+      localStorage.setItem('id', res._id);
+
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
-        this.router.navigate(['user-profil/' + res.msg._id]);
+        this.router.navigate(['user-profil']);
       });
     }, // Intercepter les messages d'erreurs du serveur
     error => {

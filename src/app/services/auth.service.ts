@@ -42,11 +42,7 @@ import { Router } from "@angular/router";
         .pipe(catchError(this.handleError));
     }
     //Update mdp
-    updatePassword(id: any, data: any): Observable<any> {
-      console.log(id);
-  
-      console.log(data);
-  
+    update1User(id: any, data: any): Observable<any> {  
       let API_URL = `${this.endpoint}/update1/${id}`;
   
       return this.http.patch(`${this.endpoint}/update1/${id}`, 

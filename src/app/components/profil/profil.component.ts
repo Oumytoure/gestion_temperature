@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, } from '@angular/forms';
 import { UsernameValidator } from 'src/app/username.validator';
 import Swal from 'sweetalert2';
@@ -11,53 +11,51 @@ import { MustMatch } from 'src/app/must-match.validator';
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.css']
 })
-export class ProfilComponent implements OnInit {
 
-  currentUser: any = {};
-  filterTerm!: string;
-  Users: any = [];
-  user: any;
-  totalLenght: any;
-  formGroup!: FormGroup;
-  submitted = false;
-  errMsg: any = true;
-  userCollection: any;
-  pass!: string;
+export class ProfilComponent implements OnInit{
 
+currentUser: any = {};
+filterTerm!: string;
+Users: any = [];
+user: any;
+totalLenght: any;
+formGroup!: FormGroup;
+registerForm: FormGroup
+submitted = false;
+errMsg:any = true;
+userCollection: any;
+pass!: string;
 
 
   constructor(private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     public authService: AuthService) {
 
-    // Recuperer les informations de l'utilisateur
-    let id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.authService.getUserProfile(id).subscribe((res) => {
-      this.currentUser = res.msg;
+      // Recuperer les informations de l'utilisateur
+    /*  let id = this.activatedRoute.snapshot.paramMap.get('id'); */
+         let id = localStorage.getItem('id');  
+     this.authService.getUserProfile(id).subscribe((res) => {
+       this.currentUser = res.msg;
 
-    });
+     });
 
-    this.formGroup = this.formBuilder.group({
+     this.formGroup = this.formBuilder.group({
       prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       email: ['', [Validators.required, Validators.email]],
-      actuelPass: ['', [Validators.required, Validators.minLength(6)],],
-      newPass: ['', [Validators.required, Validators.minLength(6)],],
-      confirmdp: ['', [Validators.required],]
-    }, { validator: MustMatch('newPass', 'confirmdp') }
+    }
     );
 
-    //controle de saisi modif mot de passe
-/*     this.formGroup = this.formBuilder.group({
-      actuelPass: ['', [Validators.required, Validators.minLength(6)],],
-      newPass: ['', [Validators.required, Validators.minLength(6)],],
-      confirmdp: ['', [Validators.required],]
-    }, { validator: MustMatch('newPass', 'confirmdp') }
-    ); */
+          //controle de saisi modif mot de passe
+          this.registerForm = this.formBuilder.group({
+            actuelPass:['', [Validators.required, Validators.minLength(6)],],
+            newPass:['', [Validators.required, Validators.minLength(6)],],
+            confirmdp:['', [Validators.required],]
+          }, { validator: MustMatch('newPass', 'confirmdp') }
+          );
   }
 
   ngOnInit(): void {
-
     this.authService.GetUsers().subscribe(
       data => {
         this.user = data;
@@ -67,8 +65,10 @@ export class ProfilComponent implements OnInit {
     );
   }
 
-  getUserData(id: any, prenom: any, nom: any, email: any) {
-    id = this.activatedRoute.snapshot.paramMap.get('id');
+//modifier les données de l'utilisateur
+  getUserData(id:any,prenom:any,nom:any,email:any){
+ id = localStorage.getItem('id');
+
     this.formGroup = this.formBuilder.group({
       id: [id],
       prenom: [prenom, [Validators.required, UsernameValidator.cannotContainSpace]],
@@ -107,29 +107,37 @@ export class ProfilComponent implements OnInit {
       });
 
   }
-  update1User() {
-    //modification paseword
-    const id = this.formGroup.value.id;
-    const userCollection = {
-      actuelPass: this.formGroup.value.actuelPass,
-      newPass: this.formGroup.value.newPass,
-      confirmdp: this.formGroup.value.confirmdp
-    }
 
-    this.submitted = true;
-    if (this.formGroup.invalid) {
-      console.log(this.formGroup.errors);
-
-      return;
-    }
-
-    return this.authService.updatePassword(localStorage.getItem('id'), this.formGroup.value).subscribe((data) => {
-      alert("modifié ")
-      this.authService.doLogout()
-    },
-      (err) => {
-        this.pass = "erreur";
-      })
-  }
-
+     //modification paseword
+     update1User(){
+      const id =  this.registerForm.value.id;    
+      const userCollection={
+       actuelPass: this.registerForm.value.actuelPass,
+        newPass: this.registerForm.value.newPass,
+       confirmdp: this.registerForm.value.confirmdp 
+     }
+     
+     this.submitted = true;
+     if(this.registerForm.invalid){
+       console.log(this.registerForm.errors);
+       
+      return ;
+     }
+     // retourne a la page deconnection apres le popup modification reussi
+     return this.authService.update1User(localStorage.getItem('id'),userCollection).subscribe((data)=>{
+      this.ngOnInit();
+       
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Modification  mot de passe réussi !',
+        showConfirmButton: false,
+        timer: 1500
+      });
+     this.authService.doLogout()
+     },
+     (err)=>{
+         this.pass="mot de passe actuel est incorrect ";
+     })
+       } 
 }
