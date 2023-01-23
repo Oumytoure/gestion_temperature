@@ -72,9 +72,9 @@ userCollection: any;
     );
   }
 //modifier les données de l'utilisateur
-  getUserData(id:any,prenom:any,nom:any,email:any){
- id = this.activatedRoute.snapshot.paramMap.get('id'); 
-
+  getUserData(prenom:any,nom:any,email:any){
+/*  id = this.activatedRoute.snapshot.paramMap.get('id');  */
+let id = localStorage.getItem('id');  
     this.formGroup = this.formBuilder.group({
         id:[id],
         prenom: [prenom, [Validators.required, UsernameValidator.cannotContainSpace]],
