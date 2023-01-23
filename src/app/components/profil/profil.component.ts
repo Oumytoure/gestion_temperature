@@ -20,6 +20,7 @@ Users: any = [];
 user: any;
 totalLenght: any;
 formGroup!: FormGroup;
+registerForm: FormGroup
 submitted = false;
 errMsg:any = true;
 userCollection: any;
@@ -42,11 +43,16 @@ pass!: string;
       prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       nom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
       email: ['', [Validators.required, Validators.email]],
-      actuelPass: ['', [Validators.required, Validators.minLength(6)],],
-      newPass: ['', [Validators.required, Validators.minLength(6)],],
-      confirmdp: ['', [Validators.required],]
-    }, { validator: MustMatch('newPass', 'confirmdp') }
+    }
     );
+
+          //controle de saisi modif mot de passe
+          this.registerForm = this.formBuilder.group({
+            actuelPass:['', [Validators.required, Validators.minLength(6)],],
+            newPass:['', [Validators.required, Validators.minLength(6)],],
+            confirmdp:['', [Validators.required],]
+          }, { validator: MustMatch('newPass', 'confirmdp') }
+          );
   }
 
   ngOnInit(): void {
@@ -102,36 +108,36 @@ pass!: string;
 
   }
 
-   //modification paseword
-  update1User(){
- const id =  this.formGroup.value.id;    
- const userCollection={
-  actuelPass: this.formGroup.value.actuelPass,
-   newPass: this.formGroup.value.newPass,
-  confirmdp: this.formGroup.value.confirmdp 
-}
-
-this.submitted = true;
-if(this.formGroup.invalid){
-  console.log(this.formGroup.errors);
-  
- return ;
-}
-// retourne a la page deconnection apres le popup modification reussi
-return this.authService.update1User(localStorage.getItem('id'),this.formGroup.value).subscribe((data)=>{
- this.ngOnInit();
-  
- Swal.fire({
-   position: 'center',
-   icon: 'success',
-   title: 'Modification  mot de passe réussi !',
-   showConfirmButton: false,
-   timer: 1500
- });
-this.authService.doLogout()
-},
-(err)=>{
-    this.pass="mot de passe actuel est incorrect ";
-})
-  } 
+     //modification paseword
+     update1User(){
+      const id =  this.registerForm.value.id;    
+      const userCollection={
+       actuelPass: this.registerForm.value.actuelPass,
+        newPass: this.registerForm.value.newPass,
+       confirmdp: this.registerForm.value.confirmdp 
+     }
+     
+     this.submitted = true;
+     if(this.registerForm.invalid){
+       console.log(this.registerForm.errors);
+       
+      return ;
+     }
+     // retourne a la page deconnection apres le popup modification reussi
+     return this.authService.update1User(localStorage.getItem('id'),userCollection).subscribe((data)=>{
+      this.ngOnInit();
+       
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Modification  mot de passe réussi !',
+        showConfirmButton: false,
+        timer: 1500
+      });
+     this.authService.doLogout()
+     },
+     (err)=>{
+         this.pass="mot de passe actuel est incorrect ";
+     })
+       } 
 }

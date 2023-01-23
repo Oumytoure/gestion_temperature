@@ -9,7 +9,7 @@ import { io } from 'socket.io-client';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent{
   currentUser: any = {};
   temperature!: number;
   humidity!: number;
@@ -30,7 +30,7 @@ this.authService.doLogout()
 }
 
 
-ngOnInit(): void {
+/* ngOnInit(): void {
   this.socket = io('http://localhost:8080');
 
   this.socket.on('connect', () => {
@@ -41,5 +41,5 @@ ngOnInit(): void {
     this.temperature = data.temperature;
     this.humidity = data.humidity;
   });
-}
+} */
 }

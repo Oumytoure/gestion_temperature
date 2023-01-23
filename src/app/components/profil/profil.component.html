@@ -96,41 +96,31 @@
       <ng-container *ngIf="this.pass">
         <div class="alert alert-danger" role="alert"><strong> Erreur </strong> {{pass}}</div>
       </ng-container>
-      <form [formGroup]="formGroup" (ngSubmit)=" update1User()">
+      <form [formGroup]="registerForm" (ngSubmit)=" update1User()">
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="actuelPass" class="col-3" name="actuelPass">Ancien</label>
           <div>
-            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password">
-
-            <div
-              *ngIf="formGroup.controls.actuelPass.dirty && formGroup.controls.actuelPass.errors&&formGroup.controls.actuelPass.errors.required"
-              class="text-danger">
-              password requis
+            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
+            
+            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
+              password requis 
             </div>
-            <div
-              *ngIf="formGroup.controls.actuelPass.dirty && formGroup.controls.actuelPass.errors && formGroup.controls.actuelPass.errors.minlength"
-              class="text-danger">
-              Mininum 6 caractères
-            </div>
-
+            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.minlength" class="text-danger">
+             Minimun 6 caractères
+            </div> 
           </div>
         </div>
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="newPass" class="col-3 mt-3" name="newPass">Nouveau</label>
           <div>
             <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1">
-            <div
-              *ngIf="formGroup.controls.newPass.dirty && formGroup.controls.newPass.errors&&formGroup.controls.newPass.errors.required"
-              class="text-danger">
-              password requis
+            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
+              password requis 
             </div>
-            <div
-              *ngIf="formGroup.controls.newPass.dirty && formGroup.controls.newPass.errors && formGroup.controls.newPass.errors.minlength"
-              class="text-danger">
-              Mininum 6 caractères
+            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.minlength" class="text-danger">
+             Minimun 6 caractères
             </div>
-
           </div>
         </div>
 
@@ -138,17 +128,12 @@
           <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
           <div>
             <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
-            <div
-              *ngIf="formGroup.controls.confirmdp.dirty && formGroup.controls.confirmdp.errors&&formGroup.controls.confirmdp.errors.required"
-              class="text-danger">
-              password requis
+            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
+            password requis
             </div>
-            <div
-              *ngIf="formGroup.controls.confirmdp.dirty && formGroup.controls.confirmdp.errors && formGroup.controls.confirmdp.errors.mustMatch"
-              class="text-danger">
+            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
               Les mots de passes ne correspondent pas
             </div>
-
           </div>
         </div>
         <button type="submit" class="btn btn-outline-primary m-3">
