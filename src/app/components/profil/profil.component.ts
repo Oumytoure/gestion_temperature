@@ -13,9 +13,6 @@ import { MustMatch } from 'src/app/must-match.validator';
   styleUrls: ['./profil.component.css']
 })
 export class ProfilComponent implements OnInit{
-/* onUpdate1() {
-throw new Error('Method not implemented.');
-} */
 
 currentUser: any = {};
 filterTerm!: string;
@@ -38,7 +35,8 @@ userCollection: any;
     public authService: AuthService){
 
       // Recuperer les informations de l'utilisateur
-     let id = this.activatedRoute.snapshot.paramMap.get('id');
+    /*  let id = this.activatedRoute.snapshot.paramMap.get('id'); */
+         let id = localStorage.getItem('id');  
      this.authService.getUserProfile(id).subscribe((res) => {
        this.currentUser = res.msg;
 
@@ -73,9 +71,10 @@ userCollection: any;
         }
     );
   }
-
+//modifier les données de l'utilisateur
   getUserData(id:any,prenom:any,nom:any,email:any){
-    id = this.activatedRoute.snapshot.paramMap.get('id');
+ id = this.activatedRoute.snapshot.paramMap.get('id'); 
+
     this.formGroup = this.formBuilder.group({
         id:[id],
         prenom: [prenom, [Validators.required, UsernameValidator.cannotContainSpace]],
@@ -116,8 +115,8 @@ userCollection: any;
       });
       
   }
+   //modification paseword
   update1User(){
- //modification paseword
  const id =  this.registerForm.value.id;    
  const userCollection={
   actuelPass: this.registerForm.value.actuelPass,
@@ -131,9 +130,8 @@ if(this.registerForm.invalid){
   
  return ;
 }
-/* aa */
+// retourne a la page deconnection apres le popup modification reussi
 return this.authService.update1User(localStorage.getItem('id'),this.registerForm.value).subscribe((data)=>{
- /*  alert("modifié ") */
  this.ngOnInit();
   
  Swal.fire({
@@ -148,27 +146,7 @@ this.authService.doLogout()
 (err)=>{
     this.pass="mot de passe actuel est incorrect ";
 })
-/* aa */
-/* 
- this.authService.updateUser(id, userCollection).subscribe(
-data=>{
 
-  this.ngOnInit();
-  
-  Swal.fire({
-    position: 'center',
-    icon: 'success',
-    title: 'Modification  mot de passe réussi !',
-    showConfirmButton: false,
-    timer: 1500
-  });window.setTimeout(function(){location.reload()},1000)
-},
-error => {
-  this.errMsg = false
-  setTimeout(()=>{ this.errMsg = true}, 2000);
-}); */
-// this.user.findOne({password: 'password'})
-//
 
   } 
  
