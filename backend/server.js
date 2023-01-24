@@ -43,7 +43,6 @@ app.use(
 app.use(cors())
 
 // Serve static resources
-app.use('/images', express.static('images'))
 app.use('/api', api)
 
 // Error favicon.ico

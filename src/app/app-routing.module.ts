@@ -4,10 +4,11 @@ import { AccueilComponent } from './components/accueil/accueil.component';
 import { ConnexionComponent } from './components/connexion/connexion.component';
 import { AuthGuard } from './services/auth.guard';
 
+
 const routes: Routes = [
   { path: '', redirectTo: '/log-in', pathMatch: 'full' },
   { path: 'log-in', component: ConnexionComponent },
-  { path: 'user-profil/:id', component: AccueilComponent, canActivate: [AuthGuard]},
+  { path: 'user-profil', component: AccueilComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

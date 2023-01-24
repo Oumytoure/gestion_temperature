@@ -1,12 +1,13 @@
-img{
+
+/* img{
     width: 780px;
     height: 500px;
-    margin-left: 18%;
     margin-top: 8%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .container{
     margin-top: -500px;
-    margin-left: 600px;
+    margin-left: 700px;
 }
 .row {
     width: 340px;
@@ -18,3 +19,18 @@ img{
 .row form {
     padding: 20px; 
 }
+ */
+
+ #intro {
+        background-image: url(https://cdn.discordapp.com/attachments/1054342024880472086/1054743835550429184/nature.jpeg);
+        height: 120vh;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        position: relative;
+        
+      }
+      @media (min-width: 992px) {
+        #intro {
+          margin-top: -58.59px;
+        }
+      }

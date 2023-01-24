@@ -36,9 +36,11 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.login(this.formGroup.value).subscribe((res: any) => {
       localStorage.setItem('access_token', res.token);
+      localStorage.setItem('id', res._id);
+
       this.authService.getUserProfile(res._id).subscribe((res) => {
         this.authService.currentUser = res;
-        this.router.navigate(['user-profil/' + res.msg._id]);
+        this.router.navigate(['user-profil']);
       });
     }, // Intercepter les messages d'erreurs du serveur
     error => {

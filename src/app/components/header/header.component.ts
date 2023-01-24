@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -7,8 +7,11 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent{
   currentUser: any = {};
+  temperature!: number;
+  humidity!: number;
+  private socket: any
 
   constructor(public authService: AuthService,
     private activatedRoute: ActivatedRoute) {
@@ -23,4 +26,5 @@ this.currentUser = res.msg;
 logout() {
 this.authService.doLogout()
 }
+
 }

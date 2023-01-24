@@ -3,9 +3,19 @@
     width: 35px;
     height: 35px;
     }
+    .img2{
+        width: 140px;
+        height: 140px;
+        margin-top: 40px;
+    }
     .img1{
         width: 200px;
         height: 200px;
+    }
+    .img2{
+        width: 140px;
+        height: 140px;
+        margin-top: 40px;
     }
     .middles{
         margin: 20px;

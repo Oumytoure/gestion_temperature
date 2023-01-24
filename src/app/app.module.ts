@@ -17,7 +17,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfilComponent } from './components/profil/profil.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,8 +28,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     ContentAccueilComponent,
     HeaderComponent,
     ProfilComponent,
-  
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,

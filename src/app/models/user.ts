@@ -6,7 +6,6 @@ export class User {
   role!: String;
   password!: String;
   etat!: boolean;
-  imageUrl!: String;
   matricule!: String;
 }
 
