@@ -21,6 +21,13 @@ this.authService.getUserProfile(id).subscribe((res) => {
   this.currentUser = res.msg;
 });
 
+this.socket.connect();
+this.socket.on('temperature', (temperature: number) => {
+  this.temperature = temperature; console.log(temperature);
+});
+this.socket.on('humidity', (humidity: number) => {
+  this.humidity = humidity; console.log(humidity);
+});
 
 }
 //Deconnexion
@@ -28,14 +35,7 @@ logout() {
 this.authService.doLogout()
 }
 
-
 ngOnInit(): void {
-  this.socket.connect();
-  this.socket.on('temperature', (temperature: number) => {
-    this.temperature = temperature; console.log(temperature);
-  });
-  this.socket.on('humidity', (humidity: number) => {
-    this.humidity = humidity; console.log(humidity);
-  });
+
 }
 }
