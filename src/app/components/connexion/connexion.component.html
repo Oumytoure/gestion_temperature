@@ -12,31 +12,42 @@
             <!-- Email input -->
             <div class="form-outline mb-4 form-group inputs">
               <label class="form-label" for="form1Example1">Adresse email</label>
-              <input type="email" id="form1Example1" class="form-control" formControlName="email" />
-              <div
+              <input type="email" id="form1Example1" class="form-control" formControlName="email" 
+              [ngClass]="{'is-invalid':submitted && formGroup.controls['email'].errors}" formControlName="email"
+              />
+              <div *ngIf="submitted && formGroup.controls['email'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
+                  Email est required
+                </div>
+              <!-- <div
                 *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required"
                 class="text-danger">
                 L' email est requis
-              </div>
+              </div> -->
               <div
                 *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern"
                 class="text-danger">
                 email est invalide
               </div>
-            </div>
+            </div></div>
             <!-- Password input -->
             <div class="form-outline mb-4 form-group inputs">
               <label class="form-label" for="password">Mot de passe</label>
-              <input type="password" id="form1Example2" class="form-control" formControlName="password" />
-              <div
+              <input type="password" id="form1Example2" class="form-control" formControlName="password"
+              [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}" />
+              <!-- <div
                 *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors&&formGroup.controls.password.errors.required"
                 class="text-danger">
                 Mot de passe requis
-              </div>
+              </div> -->
+              <div *ngIf="submitted && formGroup.controls['password'].errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['password'].errors['required']">
+                  mdp est requir
+                </div>
               <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.minlength" class="text-danger">
                 Minimum 6 caractères
               </div>
-            </div>
+            </div></div>
             <div class="form-group mb-4">
                 <!-- Checkbox -->
                 <div class="form-check">

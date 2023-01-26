@@ -101,41 +101,58 @@
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="actuelPass" class="col-3" name="actuelPass">Ancien</label>
           <div>
-            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
-            
-            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
+            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password"
+            [ngClass]="{'is-invalid':submitted && registerForm.controls['actuelPass'].errors}"
+            >
+            <div *ngIf="submitted && registerForm.controls.actuelPass.errors" class="text-danger">
+              <div *ngIf="submitted && registerForm.controls['actuelPass'].errors['required']">
+                Password is required
+              </div>
+            <!-- <div *ngIf="submitted &&registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
               password requis 
-            </div>
-            <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.minlength" class="text-danger">
+            </div> -->
+            <div *ngIf="submitted &&registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors && registerForm.controls.actuelPass.errors.minlength" class="text-danger">
              Minimun 6 caractères
             </div> 
-          </div>
+          </div></div>
         </div>
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="newPass" class="col-3 mt-3" name="newPass">Nouveau</label>
           <div>
-            <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1">
-            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
+            <input type="text" formControlName="newPass" class="form-control mb-3 mt-3" type="password" id="pass1"
+            [ngClass]="{'is-invalid':submitted && registerForm.controls.newPass.errors}"
+            >
+            <div *ngIf="submitted && registerForm.controls.newPass.errors" class="text-danger">
+              <div *ngIf="submitted && registerForm.controls['newPass'].errors['required']">
+                Password is required
+              </div>
+            <!-- <div *ngIf="submitted &&registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors&&registerForm.controls.newPass.errors.required" class="text-danger">
               password requis 
-            </div>
-            <div *ngIf="registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.minlength" class="text-danger">
+            </div> -->
+            <div *ngIf="submitted &&registerForm.controls.newPass.dirty && registerForm.controls.newPass.errors && registerForm.controls.newPass.errors.minlength" class="text-danger">
              Minimun 6 caractères
-            </div>
+            </div></div>
           </div>
         </div>
 
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
           <div>
-            <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
-            <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
+            <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password"
+            [ngClass]="{'is-invalid':submitted && registerForm.controls.confirmdp.errors}"
+            >
+            <div *ngIf="submitted && registerForm.controls.confirmdp.errors" class="text-danger">
+              <div *ngIf="submitted && registerForm.controls['confirmdp'].errors['required']">
+                Password is required
+              </div>
+            <!-- <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
             password requis
-            </div>
+            </div> -->
             <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors && registerForm.controls.confirmdp.errors.mustMatch" class="text-danger">
               Les mots de passes ne correspondent pas
             </div>
           </div>
-        </div>
+        </div></div>
         <button type="submit" class="btn btn-outline-primary m-3">
           Modifier
         </button>

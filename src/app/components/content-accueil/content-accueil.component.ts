@@ -16,13 +16,27 @@ export class ContentAccueilComponent {
     this.on = true;
     this.off = false;
   }
+/* //
+VentilateurSrc ="../../../assets/ventillateurOff.png";
+buzzerSrc = "../../../assets/buzzerOff.png";
+//
+imageButtons = [ {src:'../../../assets/ventillateurOff.png', src1:"../../../assets/buzzerOff.png"}];
+imageButtonOn = [  {src:'../../../assets/ventillateurOn.gif', src1:"../../../assets/buzzerOn.gif"}]; */
 
-constructor() { }
+//
+/* constructor() { }
 ngOnInit() {
 
-}
+} */
 //
+/* onClick(imageNameObject: {
+  src: string,
+  src1: string
+}) {
+  this.VentilateurSrc = imageNameObject.src,
+  this.buzzerSrc = imageNameObject.src1
 
+} */
   public offVentillateur():void{
     this.on = false;
     this.off = true;

@@ -52,7 +52,9 @@ pass!: string;
             confirmdp:['', [Validators.required],]
           }, { validator: MustMatch('newPass', 'confirmdp') }
           );
-  }
+
+
+   }
 
   ngOnInit(): void {
     this.authService.GetUsers().subscribe(
@@ -116,12 +118,16 @@ pass!: string;
        confirmdp: this.registerForm.value.confirmdp 
      }
      
-     this.submitted = true;
-     if(this.registerForm.invalid){
-       console.log(this.registerForm.errors);
-       
-      return ;
+     
+      this.submitted = true;
+      if(this.registerForm.invalid){
+        /* console.log(this.registerForm.errors); */
+        
+       return ;
      }
+     
+      
+     
      // retourne a la page deconnection apres le popup modification reussi
      return this.authService.update1User(localStorage.getItem('id'),userCollection).subscribe((data)=>{
       this.ngOnInit();

@@ -8,38 +8,51 @@
         <div class=" col-md-6">
             <label for="nom">Nom</label>
             <input formControlName="nom"
-                type="text" class="form-control" autocomplete="on">
-            <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.required" class="text-danger">
+                type="text" class="form-control" autocomplete="on"
+                [ngClass]="{'is-invalid':submitted && formGroup.controls['nom'].errors}"  
+                />
+                <div *ngIf="submitted && formGroup.controls.nom.errors" class="text-danger">
+                    <div *ngIf="submitted && formGroup.controls['nom'].errors['required']">
+                      champ require
+                    </div>
+           <!--  <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.required" class="text-danger">
                 Le nom est requis 
-            </div>
+            </div> -->
                 <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.cannotContainSpace" class="text-danger">
                     Espace non autorisé
                 </div>
         </div>
-        
+    </div>
         <div class="col-md-6">
             <label for="prenom">Prenom</label>
             <input  formControlName="prenom"
-                type="text" class="form-control" autocomplete="on">
-                <div *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.required" class="text-danger">
-                    Le nom est requis 
-                </div>
+                type="text" class="form-control" autocomplete="on"
+                [ngClass]="{'is-invalid':submitted && formGroup.controls['prenom'].errors}" 
+                />
+                <div *ngIf="submitted && formGroup.controls.prenom.errors" class="text-danger">
+                    <div *ngIf="submitted && formGroup.controls['prenom'].errors['required']">
+                      champ require
+                    </div>
                 <div *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.cannotContainSpace" class="text-danger">
                     Espace non autorisé
                 </div>
             </div>
+        </div>
         
         <div class="col-md-6">
             <label for="email">Email Address</label>
-            <input type="email" class="form-control" autocomplete="on" formControlName="email">
+            <input type="email" class="form-control" autocomplete="on" formControlName="email"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['email'].errors}"
+            />
 
-            <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required" class="text-danger">
-                L' email est requis 
-            </div>
+            <div *ngIf="submitted && formGroup.controls.email.errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['email'].errors['required']">
+                    email est necessair
+                </div>
             <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern" class="text-danger">
                 email est invalide
                </div>
-        </div>
+        </div></div>
         <div class="col-md-6">
             <label for="role">Rôle</label>
             <select class="form-select" [ngClass]="{'is-invalid':submitted && formGroup.controls['role'].errors}"
@@ -56,24 +69,30 @@
 
         <div class=" col-md-6">
             <label for="password">Password</label>
-            <input  formControlName="password" type="password" class="form-control" id="pass1">
-                <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.required" class="text-danger">
-                le password est necessaire
+            <input  formControlName="password" type="password" class="form-control" id="pass1"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}"
+            />
+            <div *ngIf="submitted && formGroup.controls.password.errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['password'].errors['required']">
+                    password est necessair
                 </div>
                 <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.minlength" class="text-danger"    >
                     Saisi au moins 6 caracteres
                 </div>
-            </div>
+            </div></div>
         <div class="col-md-6">
             <label for="passwordConfirm">Confirmation Password</label>
-            <input formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
-                <div *ngIf="formGroup.controls.passwordConfirm.dirty && formGroup.controls.passwordConfirm.errors && formGroup.controls.passwordConfirm.errors.required" class="text-danger">
-                    le password est necessaire
-                    </div>
+            <input formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['passwordConfirm'].errors}"
+            />
+            <div *ngIf="submitted && formGroup.controls.passwordConfirm.errors" class="text-danger">
+                <div *ngIf="submitted && formGroup.controls['passwordConfirm'].errors['required']">
+                    password est necessair
+                </div>
                 <div *ngIf="formGroup.controls.passwordConfirm.dirty && formGroup.controls.passwordConfirm.errors && formGroup.controls.passwordConfirm.errors.mustMatch" class="text-danger">
                     Les mots de passes ne correspondent pas
                 </div>
-            </div>
+            </div></div>
        
         <div class="form-group" style="display: flex; align-items: center;">
             <button class="btn btn-outline-primary">Inscrire</button>
