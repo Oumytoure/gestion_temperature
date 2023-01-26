@@ -1,28 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-/* import * as io from 'socket.io-client'; */
-import { io } from 'socket.io-client';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent{
+export class HeaderComponent {
   currentUser: any = {};
   temperature!: number;
   humidity!: number;
-  private socket: any
 
   constructor(public authService: AuthService,
-    private activatedRoute: ActivatedRoute) {
+    private socket: Socket) {
 
 // Recuperer les informations de l'utilisateur
-let id = this.activatedRoute.snapshot.paramMap.get('id');
+let id = localStorage.getItem('id');  
 this.authService.getUserProfile(id).subscribe((res) => {
-this.currentUser = res.msg;
+  this.currentUser = res.msg;
 });
+
+
 }
 //Deconnexion
 logout() {
@@ -30,16 +29,13 @@ this.authService.doLogout()
 }
 
 
-/* ngOnInit(): void {
-  this.socket = io('http://localhost:8080');
-
-  this.socket.on('connect', () => {
-    console.log('Connected to server');
+ngOnInit(): void {
+  this.socket.connect();
+  this.socket.on('temperature', (temperature: number) => {
+    this.temperature = temperature; console.log(temperature);
   });
-
-  this.socket.on('data', (data: any) => {
-    this.temperature = data.temperature;
-    this.humidity = data.humidity;
+  this.socket.on('humidity', (humidity: number) => {
+    this.humidity = humidity; console.log(humidity);
   });
-} */
+}
 }
