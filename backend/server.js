@@ -20,12 +20,12 @@ const app = express()
 /* var app = require('http').createServer(handler), */
 
 
-mongoose
-  .connect('mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority')
+const url = mongoose    /*mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1 */   /*mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority*/
+  .connect("mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority")
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
-  .catch((err) => {
+  .catch((err, client) => {
     console.error('Error connecting to mongo', err.reason)
   })
 

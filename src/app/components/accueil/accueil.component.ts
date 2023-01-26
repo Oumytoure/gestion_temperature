@@ -16,6 +16,8 @@ export class AccueilComponent{
   showArchive: boolean = false;
   showInscription: boolean = false;
   showProfil: boolean = false;
+  /* showSocket: boolean = false; */
+  
 
 
   constructor(public authService: AuthService,
@@ -38,14 +40,17 @@ export class AccueilComponent{
     this.showActifs = false;
     this.showArchive = false;
     this.showInscription = false;
-    this.showProfil = false
+    this.showProfil = false;
+    /* this.showSocket= true; */
+    
   }
   public affiche2():void {
     this.showAcceuil = false;
     this.showActifs = true;
     this.showArchive = false;
     this.showInscription = false;
-    this.showProfil = false
+    this.showProfil = false;
+    /* this.showSocket= true; */
   }
   public affiche3():void {
     this.showAcceuil = false;
@@ -53,6 +58,7 @@ export class AccueilComponent{
     this.showArchive = true;
     this.showInscription = false;
     this.showProfil = false
+    /* this.showSocket= true; */
   }
   public affiche4():void {
     this.showAcceuil = false;
@@ -60,6 +66,7 @@ export class AccueilComponent{
     this.showArchive = false;
     this.showInscription = true;
     this.showProfil = false
+    /* this.showSocket= true; */
   }
   public affiche5():void {
     this.showAcceuil = false;
@@ -67,5 +74,6 @@ export class AccueilComponent{
     this.showArchive = false;
     this.showInscription = false;
     this.showProfil = true
+    /* this.showSocket= true; */
   }
 }

@@ -2,12 +2,10 @@
 #include <SimpleDHT.h>
 int pinDHT11 = 7;
 SimpleDHT11 dht11(pinDHT11);
-#include <LiquidCrystal.h>
-const int rs = 53, en = 52, d4 = 40, d5 = 41, d6 = 38, d7 = 39;
-LiquidCrystal lcd(rs,en,d4,d5,d6,d7);
+
+
+
 int ledValue=8;
-
-
 int ventiloValue=9;
 const int bouton1 = 5;
 const int bouton2 = 6;
@@ -22,12 +20,7 @@ void setup() {
   pinMode(pinDHT11,OUTPUT); 
    pinMode(bouton1, INPUT_PULLUP);; // le bouton est une entrée a haut
   pinMode(bouton2, INPUT_PULLUP); // le bouton est une entrée
-  lcd.begin(16, 2);
-  delay(10); 
-  lcd.setCursor(0,0);
-  lcd.print("Temperature=");
-  lcd.setCursor(0,1);
-  lcd.print("humidite=");
+ 
 
 
 
@@ -54,12 +47,6 @@ Serial.print("\n");
 Serial.print((int)humidity);
 Serial.println(" H,");
 
-lcd.setCursor(14,0);
-lcd.print(temperature);
-
-
-lcd.setCursor(10,1);
-lcd.print(humidity);
 delay(1500);
 
 if((int)temperature>30){

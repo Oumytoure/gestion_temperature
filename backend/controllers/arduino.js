@@ -1,11 +1,9 @@
 
 //écoute port arduino
-
 var usbserial = '/dev/ttyUSB0'
- 
-
 //import librairie
 var path = require("path");
+var fs = require("fs");
 
 
 // Gestion des pages HTML
@@ -33,7 +31,7 @@ function getFile(exists, response, localpath) {
 }
 
 
-//obtenir le nom du fichier qu'on veit lier
+//obtenir le nom du fichier qu'on veut lier
 function getFilename(request, response) {
   var urlpath = url.parse(request.url).pathname; 
   var localpath = path.join(process.cwd(), urlpath); 
@@ -43,28 +41,17 @@ function getFilename(request, response) {
 
 
 // -- socket.io --
-
 var app = "";
 var io = require('socket.io')(app);
 
 // -- SerialPort --
 // Chargement
-
-
 const { SerialPort } = require('serialport');
 const arduino = new SerialPort({
 path: usbserial,
 autoOpen: false,
 baudRate: 9600,
-
 });
-/************ IMPORTANT ********
-Pour fonctionner correctement, le fichier 'serialport' @ Users/node_modules/serialport/lib/serialport.js
-Ã  Ã©tÃ© modifiÃ© Ã  la ligne 32
-baudRate: 115200,
-
-La communication sÃ©rie dans les sketches arduino doit Ãªtre paramÃ¨trÃ©s Ã  115200 bauds : Serial.begin(115200);  
-*/
 
 
 // Overture du port serie
@@ -103,9 +90,16 @@ arduino.on('data', function (data) {
   let buf = new Buffer(data);
   io.sockets.emit('message', buf.toString('ascii'));
   console.log(buf.toString('ascii'));
-  //console.log(buf);
-});
+});//console.log(buf);
 
 
 console.log("Serveur : Ok");
-console.log(app);
+
+
+
+
+
+
+
+
+

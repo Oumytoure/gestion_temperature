@@ -15,6 +15,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ContentAccueilComponent } from './components/content-accueil/content-accueil.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { SocketComponent } from './components/socket/socket.component';
+
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { ProfilComponent } from './components/profil/profil.component';
     ContentAccueilComponent,
     HeaderComponent,
     ProfilComponent,
+    SocketComponent,
   ],
   
   imports: [
