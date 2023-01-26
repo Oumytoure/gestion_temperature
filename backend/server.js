@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
+//const app_io = require('./arduino')
+
 mongoose
   .connect('mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority')
   .then((x) => {

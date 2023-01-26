@@ -1,0 +1,26 @@
+{
+  "name": "gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/bindings": "^9.0.4",
+    "@serialport/parser-readline": "^10.5.0",
+    "assert": "^2.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "http": "0.0.1-security",
+    "mongoose": "^6.8.3",
+    "nodemodule": "^0.3.0",
+    "serialport": "^10.5.0",
+    "socket.io": "^4.5.4",
+    "url": "^0.11.0",
+    "ws": "^7.3.1"
+  }
+}

@@ -36,6 +36,7 @@ pass!: string;
       this.authService.getUserProfile(id).subscribe((res) => {
       this.currentUser = res.msg;
 
+
      });
 
      this.formGroup = this.formBuilder.group({
