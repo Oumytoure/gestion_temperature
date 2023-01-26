@@ -15,7 +15,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ContentAccueilComponent } from './components/content-accueil/content-accueil.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfilComponent } from './components/profil/profil.component';
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { ProfilComponent } from './components/profil/profil.component';
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     {

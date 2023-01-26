@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
 
 
 @Component({
@@ -16,17 +15,25 @@ export class AccueilComponent{
   showArchive: boolean = false;
   showInscription: boolean = false;
   showProfil: boolean = false;
-
+  temperature!: number;
+  humidity!: number;
 
   constructor(public authService: AuthService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private socket: Socket) {
 
      // Recuperer les informations de l'utilisateur
     let id = localStorage.getItem('id'); 
      this.authService.getUserProfile(id).subscribe((res) => {
        this.currentUser = res.msg;
      });
+
+    this.socket.connect();
+    this.socket.on('temperature', (temperature: number) => {
+      this.temperature = temperature;
+    });
+    this.socket.on('humidity', (humidity: number) => {
+      this.humidity = humidity;
+    });
   }
     //Deconnexion
     logout() {

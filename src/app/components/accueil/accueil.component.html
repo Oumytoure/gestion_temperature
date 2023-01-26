@@ -1,6 +1,7 @@
 <div class="navig">
     <div class="">
-        <img src="../../../assets/soleil.jpg" alt="">
+        <img *ngIf="this.temperature >= 30" src="../../../assets/soleil.jpg" alt="">
+        <img *ngIf="this.temperature < 30" src="../../../assets/humidite.jpg" alt="">
     </div>
     <div class="d-flex icons m-3 bg-info">
         <i style="font-size: 25px;" class="bi bi-person-check"></i>
@@ -18,7 +19,7 @@
 
     <div class="d-flex bg-primary header fixed-top">
         <div class="d-flex m-2">
-            <a (click)="affiche1()"><i style="font-size: 25px;" class="bi bi-house-fill"></i></a> &nbsp;&nbsp;
+            <a (click)="affiche1()"><i style="font-size: 25px;" class="bi bi-house-fill"></i></a>&nbsp;&nbsp;
             <h5 class="m-2">{{ this.currentUser.prenom }} {{ this.currentUser.nom }}</h5>
         </div>
         <button class="btn btn-link" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
