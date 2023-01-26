@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-header',
@@ -9,18 +9,33 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class HeaderComponent {
   currentUser: any = {};
+  temperature!: number;
+  humidity!: number;
 
   constructor(public authService: AuthService,
-    private activatedRoute: ActivatedRoute) {
+    private socket: Socket) {
 
 // Recuperer les informations de l'utilisateur
-let id = this.activatedRoute.snapshot.paramMap.get('id');
+let id = localStorage.getItem('id');  
 this.authService.getUserProfile(id).subscribe((res) => {
-this.currentUser = res.msg;
+  this.currentUser = res.msg;
 });
+
+this.socket.connect();
+this.socket.on('temperature', (temperature: number) => {
+  this.temperature = temperature; console.log(temperature);
+});
+this.socket.on('humidity', (humidity: number) => {
+  this.humidity = humidity; console.log(humidity);
+});
+
 }
 //Deconnexion
 logout() {
 this.authService.doLogout()
+}
+
+ngOnInit(): void {
+
 }
 }

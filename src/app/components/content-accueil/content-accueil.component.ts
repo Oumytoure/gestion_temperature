@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
 
 //import socket client
 
@@ -11,18 +12,33 @@ import { Component } from '@angular/core';
 export class ContentAccueilComponent {
   on: boolean = false;
   off: boolean = true;
+  temperature!: number;
+  humidity!: number;
+
+  constructor(private socket: Socket){
+    this.socket.connect();
+    this.socket.on('temperature', (temperature: number) => {
+      this.temperature = temperature; console.log(temperature);
+    });
+    this.socket.on('humidity', (humidity: number) => {
+      this.humidity = humidity; console.log(humidity);
+    });
+  }
 
   public onVentillateur():void{
     this.on = true;
     this.off = false;
   }
 
+<<<<<<< HEAD
 constructor() { }
 ngOnInit() {
 
 }
 //
 
+=======
+>>>>>>> origin/mg
   public offVentillateur():void{
     this.on = false;
     this.off = true;

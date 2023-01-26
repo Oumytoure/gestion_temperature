@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const userSchema = require('../models/User')
-const authorize = require('../middlewares/auth')
+const authorize = require('../authentification/auth')
 mongoose = require('mongoose')
 
 // Inscription
@@ -38,12 +38,8 @@ router.post('/add-user', (req, res, next) => {
 )
 //modif mdp
 router.patch('/update1/:id', async(req, res) => {
-
-  // console.log(req.params.id);
   try {
         let { actuelPass, newPass } = req.body;
-        console.log(req.body);
-
         const id = req.params.id;
         const updatedData = req.body;
         const options = { new: true };
@@ -60,7 +56,6 @@ router.patch('/update1/:id', async(req, res) => {
                       const result = await userSchema.findByIdAndUpdate(
                       id, updatedData, options
                       );
-
                     return res.send(result);
                 }
                 return res.send('no corres');
@@ -70,46 +65,13 @@ router.patch('/update1/:id', async(req, res) => {
         const result = await userSchema.findByIdAndUpdate(
               id, updatedData, options
           )
-
           return res.send(result)
       }
-
-
-
   }
   catch (error) {
       res.status(400).json({ message: error.message })
   }
 })
- router.put('/update1/:id').get((req, res, next) => {
-let user = userSchema
-    .findOne({
-      id: req.params.id
-    })
-    getUser = user
-    return bcrypt.compare(req.body.password, user.password)
-    .then((response) => {
-      if (!response) {
-        return;
-      }
-      userSchema.findByIdAndUpdate(
-        user.id,
-        {
-          $set: req.body,
-        },
-        (error, data) => {
-          if (error) {
-            return next(error)
-          } else {
-            res.json(data)
-            console.log('Modification réussie !')
-          }
-        },
-      )
-    })
-
-  }) 
-    
 
 // Connexion
 router.post('/login', (req, res, next) => {

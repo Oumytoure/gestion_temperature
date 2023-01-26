@@ -1,4 +1,26 @@
 
+/* img{
+    width: 780px;
+    height: 500px;
+    margin-top: 8%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.container{
+    margin-top: -500px;
+    margin-left: 700px;
+}
+.row {
+    width: 340px;
+    height: 500px;
+    background: #E4F2F6;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    position: absolute;
+}
+.row form {
+    padding: 20px; 
+}
+ */
+
  #intro {
         background-image: url(https://cdn.discordapp.com/attachments/1054342024880472086/1054743835550429184/nature.jpeg);
         height: 120vh;
@@ -7,8 +29,6 @@
         position: relative;
         
       }
-
-      /* Height for devices larger than 576px */
       @media (min-width: 992px) {
         #intro {
           margin-top: -58.59px;

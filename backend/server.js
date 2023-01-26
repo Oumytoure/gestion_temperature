@@ -6,19 +6,7 @@ const mongoose = require('mongoose')
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
-
-//import arduino.js
-const api1 = require('./controllers/arduino')
-
-
-
-// Express settings
-const app = express()
-// -- socket.io --
-// Chargement
-
-/* var app = require('http').createServer(handler), */
-
+//const app_io = require('./arduino')
 
 mongoose
   .connect('mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority')
@@ -43,7 +31,6 @@ app.use(
 app.use(cors())
 
 // Serve static resources
-app.use('/images', express.static('images'))
 app.use('/api', api)
 
 // Error favicon.ico

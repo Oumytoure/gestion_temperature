@@ -1,7 +1,6 @@
 .profil{
     background-color: #fff;
     border-radius: 5px;
-    width: 700px;
 }
 p{
     margin-top: -3px;
@@ -9,6 +8,6 @@ p{
 .profile{
     background-color: #fff;
     border-radius: 5px;
-    width: 700px;
-    margin-left: 41px;
+    width: 600px;
+    margin-left: 4%;
 }
