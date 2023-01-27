@@ -6,11 +6,16 @@ const mongoose = require('mongoose')
 // Express APIs
 const api = require('./controllers/user.ctrl')
 
+//const app_io = require('./arduino')
 
-//import arduino.js
-const api1 = require('./controllers/arduino')
-
-
+mongoose
+  .connect('mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority')
+  .then((x) => {
+    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  })
+  .catch((err) => {
+    console.error('Error connecting to mongo', err.reason)
+  })
 
 // Express settings
 const app = express()

@@ -17,7 +17,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProfilComponent } from './components/profil/profil.component';
 import { SocketComponent } from './components/socket/socket.component';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} }
 
 @NgModule({
   declarations: [
@@ -40,7 +42,8 @@ import { SocketComponent } from './components/socket/socket.component';
     FormsModule,
     HttpClientModule,
     Ng2SearchPipeModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
     {

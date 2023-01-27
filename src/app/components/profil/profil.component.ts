@@ -32,9 +32,9 @@ pass!: string;
     public authService: AuthService) {
 
       // Recuperer les informations de l'utilisateur
-      let id = localStorage.getItem('id');  
-      this.authService.getUserProfile(id).subscribe((res) => {
-      this.currentUser = res.msg;
+         let id = localStorage.getItem('id');  
+     this.authService.getUserProfile(id).subscribe((res) => {
+       this.currentUser = res.msg;
 
      });
 
