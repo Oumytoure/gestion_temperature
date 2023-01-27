@@ -14,12 +14,8 @@ const api1 = require('./controllers/arduino')
 
 // Express settings
 const app = express()
-// -- socket.io --
-// Chargement
 
-/* var app = require('http').createServer(handler), */
-
-
+// connexion avec mongo
 const url = mongoose    /*mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.1 */   /*mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority*/
   .connect("mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/Gestion_Utilisateur?retryWrites=true&w=majority")
   .then((x) => {
@@ -70,35 +66,5 @@ app.use(function (err, req, res, next) {
 
 
 
-//<socket io>
 
-/* var io = require('socket.io');
-
-
-console.log('io');
-
-
-
-io.sockets.on('connection', function (socket) {
-  socket.on('message', function (data) {
-    socket.broadcast.emit('message', data);
-    console.log(data);
-  });
-}); */
-// <socket io/>
-
-
-// arduino
-/* var serialport = require('serialport');
-const parsers = serialport.parsers;
-const parser = new parsers.ReadLine({
-  delimeter :"\r\n"
-
-});
-var  portArduino = new serialport("COM4",{
-  baudRate: 9060,
-
-});
- */
-//
 
