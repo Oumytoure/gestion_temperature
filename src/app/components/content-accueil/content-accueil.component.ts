@@ -30,15 +30,6 @@ export class ContentAccueilComponent {
     this.off = false;
   }
 
-<<<<<<< HEAD
-constructor() { }
-ngOnInit() {
-
-}
-//
-
-=======
->>>>>>> origin/mg
   public offVentillateur():void{
     this.on = false;
     this.off = true;

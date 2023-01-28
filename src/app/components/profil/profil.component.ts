@@ -65,15 +65,9 @@ pass!: string;
   }
 
 //modifier les données de l'utilisateur
-<<<<<<< HEAD
-  getUserData(prenom:any,nom:any,email:any){
-/*  id = this.activatedRoute.snapshot.paramMap.get('id');  */
-let id = localStorage.getItem('id');  
-=======
   getUserData(id:any,prenom:any,nom:any,email:any){
  id = localStorage.getItem('id');
 
->>>>>>> origin/mg
     this.formGroup = this.formBuilder.group({
       id: [id],
       prenom: [prenom, [Validators.required, UsernameValidator.cannotContainSpace]],
