@@ -16,7 +16,7 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "http": "0.0.1-security",
-    "mongoose": "^6.8.3",
+    "mongoose": "^6.9.0",
     "nodemodule": "^0.3.0",
     "serialport": "^10.5.0",
     "socket.io": "^4.5.4",
