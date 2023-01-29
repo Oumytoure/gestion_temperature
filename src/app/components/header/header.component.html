@@ -5,11 +5,11 @@
             <div style="margin-left: 10%;">
                 <div class="d-flex"><i class="bi bi-thermometer-half"></i> 
                     <p>TEMPÉRATURE : </p>
-                    <h3 class="text-primary" style="margin-left: 50px; margin-top: -5px;"> {{ temperature }} °C</h3>
+                    <h3 class="text-primary" style="margin-left: 50px; margin-top: -5px;"> {{ temperature }} <span *ngIf="temperature == null"><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span>°C</h3>
                 </div>
                 <div class="d-flex"><i class="bi bi-droplet-half"></i> 
                     <p>HUMIDITÉ : </p>
-                    <h3 class="text-primary" style="margin-left: 85px; margin-top: -5px;"> {{ humidity }} %</h3>
+                    <h3 class="text-primary" style="margin-left: 85px; margin-top: -5px;"> {{ humidity }} <span *ngIf="humidity == null"><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span>%</h3>
                 </div>
             </div>
         </div>
@@ -18,11 +18,11 @@
             <div style="margin-left: 10%;">
                 <div class="d-flex"><i class="bi bi-thermometer-half"></i> 
                     <p>TEMPÉRATURE : </p>
-                    <h3 class="text-primary" style="margin-left: 50px; margin-top: -5px;">  °C</h3>
+                    <h3 class="text-primary" style="margin-left: 50px; margin-top: -5px;"> {{ Mtemp | number: '1.0-0' }} <span *ngIf="Mtemp == null"><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span> °C</h3>
                 </div>
                 <div class="d-flex"><i class="bi bi-droplet-half"></i> 
                     <p>HUMIDITÉ : </p>
-                    <h3 class="text-primary" style="margin-left: 85px; margin-top: -5px;"> %</h3>
+                    <h3 class="text-primary" style="margin-left: 85px; margin-top: -5px;"> {{ Mhum | number: '1.0-0' }} <span *ngIf="Mhum == null"><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span> %</h3>
                 </div>
             </div>
         </div>
