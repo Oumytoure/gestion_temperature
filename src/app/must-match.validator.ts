@@ -1,22 +1,18 @@
-import { FormGroup } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { AccueilComponent } from './components/accueil/accueil.component';
+import { ConnexionComponent } from './components/connexion/connexion.component';
+import { AuthGuard } from './services/auth.guard';
 
-// custom validator to check that two fields match
-export function MustMatch(controlName: string, matchingControlName: string) {
-    return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-        
 
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            // return if another validator has already found an error on the matchingControl
-            return;
-        }
+const routes: Routes = [
+  { path: '', redirectTo: '/log-in', pathMatch: 'full' },
+  { path: 'log-in', component: ConnexionComponent },
+  { path: 'user-profil', component: AccueilComponent, canActivate: [AuthGuard]},
+];
 
-        // set error on matchingControl if validation fails
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
-    }
-}
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
