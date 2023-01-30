@@ -7,8 +7,8 @@
         </ng-container>
         <div class=" col-md-6">
             <label for="nom">Nom</label>
-            <input formControlName="nom"
-                type="text" class="form-control" autocomplete="on">
+            <input formControlName="nom" type="text" class="form-control" autocomplete="on"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['nom'].errors}" formControlName="nom">
             <div *ngIf="formGroup.controls.nom.dirty && formGroup.controls.nom.errors && formGroup.controls.nom.errors.required" class="text-danger">
                 Le nom est requis 
             </div>
@@ -19,8 +19,8 @@
         
         <div class="col-md-6">
             <label for="prenom">Prenom</label>
-            <input  formControlName="prenom"
-                type="text" class="form-control" autocomplete="on">
+            <input  formControlName="prenom" type="text" class="form-control" autocomplete="on"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['prenom'].errors}" formControlName="prenom">
                 <div *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.required" class="text-danger">
                     Le nom est requis 
                 </div>
@@ -31,7 +31,8 @@
         
         <div class="col-md-6">
             <label for="email">Email Address</label>
-            <input type="email" class="form-control" autocomplete="on" formControlName="email">
+            <input type="email" class="form-control" autocomplete="on" formControlName="email"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['email'].errors}" formControlName="email">
 
             <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required" class="text-danger">
                 L' email est requis 
@@ -56,7 +57,8 @@
 
         <div class=" col-md-6">
             <label for="password">Password</label>
-            <input  formControlName="password" type="password" class="form-control" id="pass1">
+            <input  formControlName="password" type="password" class="form-control" id="pass1"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['password'].errors}" formControlName="password">
                 <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.required" class="text-danger">
                 le password est necessaire
                 </div>
@@ -68,7 +70,8 @@
 
         <div class="col-md-6">
             <label for="passwordConfirm">Confirmation Password</label>
-            <input formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2">
+            <input formControlName="passwordConfirm" type="password" class="form-control" autocomplete="on" id="pass2"
+            [ngClass]="{'is-invalid':submitted && formGroup.controls['passwordConfirm'].errors}" formControlName="passwordConfirm">
                 <div *ngIf="formGroup.controls.passwordConfirm.dirty && formGroup.controls.passwordConfirm.errors && formGroup.controls.passwordConfirm.errors.required" class="text-danger">
                     le password est necessaire
                     </div>
