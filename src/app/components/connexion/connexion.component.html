@@ -19,7 +19,7 @@
                 L' email est requis
               </div>
               <div
-                *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern"
+                *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.email"
                 class="text-danger">
                 email est invalide
               </div>
@@ -33,19 +33,8 @@
                 class="text-danger">
                 Mot de passe requis
               </div>
-              <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors" class="text-danger">
+              <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors&&formGroup.controls.password.errors.minlength" class="text-danger">
                 Minimum 6 caractères
-              </div>
-            </div>
-            <div class="form-group mb-4">
-                <!-- Checkbox -->
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="form1Example3" />
-                  <label class="form-check-label" for="form1Example3">
-                    Remember me
-                  </label>
-                </div>
-              <div class="col text-center">
               </div>
             </div>
             <!-- Submit button -->

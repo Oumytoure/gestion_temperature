@@ -25,10 +25,12 @@ constructor(private activatedRoute: ActivatedRoute,
             private formBuilder: FormBuilder,
             public authService: AuthService){
 
-              let id = this.activatedRoute.snapshot.paramMap.get('id');
-              this.authService.getUserProfile(id).subscribe((res) => {
-                this.currentUser = res.msg;
-              });
+            // Recuperer les informations de l'utilisateur
+            let id = localStorage.getItem('id'); 
+            this.authService.getUserProfile(id).subscribe((res) => {
+              this.currentUser = res.msg;
+            });
+                
 
               this.formGroup = this.formBuilder.group({
                 prenom: ['', [Validators.required, UsernameValidator.cannotContainSpace]],
