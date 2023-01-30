@@ -1,4 +1,11 @@
-
+/* @media  screen and (max-width: 1500px){
+    .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+ */
    .img{
     width: 35px;
     height: 35px;
@@ -24,6 +31,17 @@
         border-radius: 7px;
         width: 250px;
         height: 120px;
+
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    }
+    .tab{
+        margin: 20px;
+        margin-top: 60px;
+        background-color: #fff;
+        border-radius: 7px;
+        width: 250px;
+        height: 120px;
+
         box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
     .ctrl{

@@ -1,19 +1,64 @@
 
-@media  screen and (max-width: 600px){
+@media  screen and (max-width: 700px){
 
     aside{
+        margin-right: 40%;
         float: right;
         
     }
+    aside .navig{
+        background-color:transparent;
+    }
     .navig{
-        margin-top: 50%;
+        display: flex;
+        flex-wrap: flex;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-between;
+        height: 30px;
+
     }
-    aside,div,p,a{
-        color: #fff;
+    div.header{
+        position: relative;
+        justify-content: space-between;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
     }
-    p{
+    div .icons{
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+        border-radius: 50%;
+    }
+}
+
+@media  screen and (max-width: 400px){
+
+    .navig{
+        width: 100%;
+        display: flex;
+        margin-top: 7%;
+        flex-wrap: nowrap;
+        align-items:flex-start;
+        justify-content:flex-start;
+       
+
+    }
+
+
+    div .icons{
+        display: flex;
+        flex-wrap: wrap;
+        float: left;
+
+    } 
+ /*    .navig{
         display: none;
-    }
+    } */
 
 
 }
