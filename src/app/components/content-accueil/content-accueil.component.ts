@@ -29,6 +29,14 @@ export class ContentAccueilComponent implements OnInit{
     this.socket.connect();
     this.socket.on('temperature', (temperature: number) => {
       this.temperature = temperature; 
+      if (temperature > 30) {
+        this.on = true
+        this.off = false
+      }
+      else{
+        this.on = false
+        this.off = true
+      }
     });
     this.socket.on('humidity', (humidity: number) => {
       this.humidity = humidity;

@@ -87,7 +87,7 @@ parser.on('data', function(data) {
     var heureEtDate = mois + '/' + numMois + '/' + laDate;
 
        //Insertion à la base de donénes
-    if ((heur == 8 && min == 00 && sec == 00) || (heur == 18 && min == 04 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 08 && min == 00 && sec == 00) || (heur == 12 && min == 32 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
         //l'objet qui contient la temperature, humidite et la date
         var tempEtHum = { 'Temperature': buf[0], 'Humidity': buf[1], 'Date': heureEtDate, 'Heure': heureInsertion };
         //Connexion a mongodb et insertion Temperature et humidite
@@ -99,7 +99,7 @@ parser.on('data', function(data) {
                 if (err) throw err;
                 console.log("nouvelle insertion dans la bdd");
                 db.close();
-            });
+            })
         });
 
     } 

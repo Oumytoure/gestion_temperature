@@ -19,10 +19,11 @@ export class TableArchivesComponent implements OnInit{
   constructor(private authService: AuthService,
               private activatedRoute: ActivatedRoute){
 
-              let id = this.activatedRoute.snapshot.paramMap.get('id');
-              this.authService.getUserProfile(id).subscribe((res) => {
-                this.currentUser = res.msg;
-              });
+     // Recuperer les informations de l'utilisateur
+     let id = localStorage.getItem('id'); 
+     this.authService.getUserProfile(id).subscribe((res) => {
+       this.currentUser = res.msg;
+     });
   }
 
   ngOnInit(): void {
