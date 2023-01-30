@@ -1,6 +1,26 @@
+
+@media  screen and (max-width: 700px){
+
+    aside{
+        float: right;
+        
+    }
+    .navig{
+        margin-top: 50%;
+    }
+    aside,div,p,a{
+        color: #fff;
+    }
+    p{
+        display: none;
+    }
+
+
+}
+
 body{
     background-color: #E4F2F6;
-    height: 1000px;
+    height: 100%;
 }
 a{
     text-decoration: none;

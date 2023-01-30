@@ -1,4 +1,4 @@
-  <body class="d-flex">
+<body class="d-flex">
 <div class="container tab my-5">
     <!-- -------------------Recherche---------------- -->
     <div class="form-group col-md-3">
@@ -12,42 +12,42 @@
       </div>
     </div>
     
-    <table class="table table-hover w-100 my-3">
-      <thead>
-          <tr class="line">
-            <th scope="col">Matricule</th>
-              <th scope="col">Prenom</th>
-              <th scope="col">Nom</th>
-              <th scope="col">Email</th>
-              <th scope="col">Rôle</th>
-              <th *ngIf="this.currentUser.role === 'Utilisateur'" scope="col">Date inscription</th>
-              <th *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'" scope="col">Actions</th>
-          </tr>
-      </thead>
-      <!-- Recuperer et afficher les informations de la base de donnée -->
-      <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght}">
-        <tr *ngIf="(donnee._id !== this.currentUser._id) && (donnee.role !== 'Super_admin')"> <!-- Pour filter l'utilisateur qui est connecté -->
-              <td>{{ donnee.matricule }}</td>
-              <td>{{ donnee.prenom }}</td>
-              <td>{{ donnee.nom }}</td>
-              <td>{{ donnee.email }}</td>
-              <td>{{ donnee.role }}</td>
-              <td *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'">
-                <button title="Archiver" class="btn link" (click)="archiver(donnee._id, donnee.etat)">
-                  <i class="bi bi-arrow-down-square"></i>
-                </button>
-                <button title="Modifier" class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
-                  <i class="bi bi-pencil-square"></i>
-                </button>
-                <button title="Switch" class="btn link" (click)="switcher(donnee._id, donnee.role)">
-                  <i class="bi bi-arrow-left-right" ></i>
-                </button>
-              </td>
-              <td *ngIf="this.currentUser.role === 'Utilisateur'">{{ donnee.createdAt | date:'d MMMM yyyy à HH:mm'}} </td>
-          </tr>
-      </tbody>
-    </table>
-  </div>
+      <table class="table table-hover w-100 my-3">
+        <thead>
+            <tr class="line">
+              <th scope="col">Matricule</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Email</th>
+                <th scope="col">Rôle</th>
+                <th *ngIf="this.currentUser.role === 'Utilisateur'" scope="col">Date inscription</th>
+                <th *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'" scope="col">Actions</th>
+            </tr>
+        </thead>
+        <!-- Recuperer et afficher les informations de la base de donnée -->
+        <tbody *ngFor="let donnee of Users | filter: filterTerm | paginate: {itemsPerPage:6, currentPage:page, totalItems:totalLenght}">
+          <tr *ngIf="(donnee._id !== this.currentUser._id) && (donnee.role !== 'Super_admin')"> <!-- Pour filter l'utilisateur qui est connecté -->
+                <td>{{ donnee.matricule }}</td>
+                <td>{{ donnee.prenom }}</td>
+                <td>{{ donnee.nom }}</td>
+                <td>{{ donnee.email }}</td>
+                <td>{{ donnee.role }}</td>
+                <td *ngIf="this.currentUser.role === 'Administrateur' || 'Super_admin'">
+                  <button title="Archiver" class="btn link" (click)="archiver(donnee._id, donnee.etat)">
+                    <i class="bi bi-arrow-down-square"></i>
+                  </button>
+                  <button title="Modifier" class="btn link" data-toggle="modal" data-target="#modifier" (click)="getUserData(donnee._id,donnee.prenom,donnee.nom,donnee.email)">
+                    <i class="bi bi-pencil-square"></i>
+                  </button>
+                  <button title="Switch" class="btn link" (click)="switcher(donnee._id, donnee.role)">
+                    <i class="bi bi-arrow-left-right" ></i>
+                  </button>
+                </td>
+                <td *ngIf="this.currentUser.role === 'Utilisateur'">{{ donnee.createdAt | date:'d MMMM yyyy à HH:mm'}} </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
   <!-- ------------------------Pagination---------------------- -->
 <div class="pagination fixed-bottom justify-content-center">
     <pagination-controls (pageChange)="page=$event"></pagination-controls>
