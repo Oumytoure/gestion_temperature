@@ -5,9 +5,13 @@
             <h4>8H 00</h4>
             <img class="img" src="../../../assets/lever-soleil.png" alt="">
         </div>
-        <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
+        <div class="m-3" *ngIf="donne8h == '' || null">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+        </div>
+        <div class="m-3" *ngFor="let i of donne8h">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span>{{ i.Temperature }} °C</span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span>{{ i.Humidity }} %</span></p>
         </div>
     </div>
     <div class="col-4 middles">
@@ -15,9 +19,13 @@
             <h4>12H 00</h4>
             <img class="img" src="../../../assets/soleil-chaud.png" alt="">
         </div>
-        <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
+        <div class="m-3" *ngIf="donne12h == '' || null">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+        </div>
+        <div class="m-3" *ngFor="let j of donne12h">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span>{{ j.Temperature }} °C</span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span>{{ j.Humidity }} %</span></p>
         </div>
     </div>
     <div class="col-4 middles">
@@ -25,29 +33,33 @@
             <h4>19H 00</h4>
             <img class="img" src="../../../assets/lune.png" alt="" wi>
         </div>
-        <div class="m-3">
-            <p><i class="bi bi-thermometer-half"></i> Temperature :</p>
-            <p><i class="bi bi-droplet-half"></i> Humidité :</p>
+        <div class="m-3" *ngIf="donne19h == '' || null">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span><i class="bi bi-dash"></i><i class="bi bi-dash"></i></span></p>
+        </div>
+        <div class="m-3" *ngFor="let k of donne19h">
+            <p><i class="bi bi-thermometer-half"></i> Temperature : <span>{{ k.Temperature }} °C</span></p>
+            <p><i class="bi bi-droplet-half"></i> Humidité : <span>{{ k.Humidity }} %</span></p>
         </div>
     </div>
 </div>
 
-<div class="d-flex justify-content-center">
+<div class="d-flex" style="margin-left: 5%;">
     <div class="ctrl">
         <h4 class="text-primary text-center m-2">Contrôle du système</h4>
-        <div class="d-flex" style="margin-top: -3%; justify-content: space-around;">
+        <div class="d-flex" style="margin-top: 5%; justify-content: space-around;">
             <button (click)="onVentillateur()" class="button rounded-circle" 
             style="display: flex; flex-direction: column; border-color: green; width: 60px; height: 60px;">
                 <i style="font-size: 30px; margin-left: 6px;" class="bi bi-power text-success"></i>
-                <span style="margin-top: -13px; margin-left: 8px;" class="text-success">ON</span>
+                <p style="margin-top: -13px; margin-left: 8px;" class="text-success">ON</p>
             </button>
             <button (click)="offVentillateur()" class="button rounded-circle" 
             style="display: flex; flex-direction: column; border-color: red; width: 60px; height: 60px;">
                 <i style="font-size: 30px; margin-left: 6px;" class="bi bi-power text-danger"></i>
-                <span style="margin-top: -13px; margin-left: 7px;" class="text-danger">OFF</span>
+                <p style="margin-top: -13px; margin-left: 7px;" class="text-danger">OFF</p>
             </button>
         </div>
-        <div  class="d-flex justify-content-center" style="margin-top: -11%;"> 
+        <div  class="d-flex justify-content-center" style="margin-top: -8%;"> 
             <img *ngIf="off" class="img1" src="../../../assets/ventillateurOff.png" alt="">
             <img *ngIf="on" class="img2" src="../../../assets/ventillateurOn.gif" alt="">
         </div>
@@ -58,35 +70,27 @@
             <thead>
               <tr>
                 <th scope="col"><i class="bi bi-calendar-check"></i> Jours</th>
-                <th scope="col">Lundi</th>
-                <th scope="col">Mardi</th>
-                <th scope="col">Mercredi</th>
-                <th scope="col">Jeudi</th>
-                <th scope="col">Vendredi</th>
-                <th scope="col">Samedi</th>
-                <th scope="col">Dimanche</th>
+                <th scope="col"*ngFor="let date of filter_hist" >{{date.Date}}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><i class="bi bi-thermometer-half"></i> Température</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th scope="row"> 8h</th>
+                <td *ngFor="let h8 of hist8h">
+                    {{h8.Temperature}} °C &nbsp; {{h8.Humidity}} %
+                </td>
               </tr>
               <tr>
-                <th scope="row"><i class="bi bi-droplet-half"></i> Humidité</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <th scope="row"> 12h</th>
+                <td *ngFor="let h12 of hist12h">
+                    {{h12.Temperature}} °C &nbsp; {{h12.Humidity}} %
+                </td>
+              </tr>
+              <tr>
+                <th scope="row"> 19h</th>
+                <td *ngFor="let h19 of hist19h">
+                    {{h19.Temperature}} °C &nbsp; {{h19.Humidity}} %
+                </td>
               </tr>
             </tbody>
           </table>

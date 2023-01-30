@@ -14,13 +14,17 @@ import { Router } from "@angular/router";
     headers = new HttpHeaders().set('Content-Type', 'application/json');
     currentUser = {};
     httpClient: any;
+    endpointIo: string = 'http://localhost:3000'
 
     constructor(private http: HttpClient, public router: Router) {}
   
-     // Recuperer tous les utilisateurs
+     // Recuprer tous les utilisateurs
     GetUsers() {
         return this.http.get(`${this.endpoint}`);
-  
+    }
+
+    GetDonnees(){
+      return this.http.get(`${this.endpointIo}`);
     }
   
     // Recuperer un utilisateur
