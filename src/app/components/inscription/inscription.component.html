@@ -36,7 +36,7 @@
             <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.required" class="text-danger">
                 L' email est requis 
             </div>
-            <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.pattern" class="text-danger">
+            <div *ngIf="formGroup.controls.email.dirty && formGroup.controls.email.errors && formGroup.controls.email.errors.email" class="text-danger">
                 email est invalide
                </div>
         </div>
@@ -58,7 +58,7 @@
             <label for="password">Password</label>
             <input  formControlName="password" type="password" class="form-control" id="pass1">
                 <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.required" class="text-danger">
-                le password est necessaire
+                    Le mot de passe est necessaire
                 </div>
                 <div *ngIf="formGroup.controls.password.dirty && formGroup.controls.password.errors && formGroup.controls.password.errors.minlength" class="text-danger"    >
                     Saisi au moins 6 caracteres

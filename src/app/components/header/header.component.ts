@@ -44,9 +44,9 @@ ngOnInit(): void {
     data => {
       this.donees = data as unknown as Tem_Hum[];    console.log(this.donees);
       
-      this.donne8h = this.donees.filter((e:any)=> e.Heure == '15:01:00' && e.Date == this.createDate)
-      this.donne12h = this.donees.filter((e:any)=> e.Heure == '15:07:00' && e.Date == this.createDate)
-      this.donne19h = this.donees.filter((e:any)=> e.Heure == '15:32:00' && e.Date == this.createDate)
+      this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.createDate)
+      this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.createDate)
+      this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.createDate)
 
       this.temp8h = this.donne8h[0].Temperature;
       this.temp12h = this.donne12h[0].Temperature; 
