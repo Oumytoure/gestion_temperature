@@ -52,7 +52,7 @@ export class ContentAccueilComponent implements OnInit{
         this.donees = data as unknown as Tem_Hum[];
         this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.dateNow)
         this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.dateNow)
-        this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow)
+        this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow) 
         this.historique = this.donees.filter((e:any)=> e.Date < this.dateNow && e.Date >= this.last_week)
         this.hist8h = this.historique.filter((h:any)=> h.Heure == '08:00:00')
         this.hist12h = this.historique.filter((h:any)=> h.Heure == '12:00:00')
