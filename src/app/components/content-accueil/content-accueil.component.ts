@@ -46,14 +46,14 @@ export class ContentAccueilComponent implements OnInit{
   ngOnInit(): void {
     this.dateNow  = new Date().getDate() + '/' + new Date().getMonth() +1 + '/' + new Date().getFullYear()
     this.last_week = (new Date().getDate()-7) + '/' + new Date().getMonth() +1 + '/' + new Date().getFullYear()
-    
     this.authService.GetDonnees().subscribe(
       data => {
         this.donees = data as unknown as Tem_Hum[];
         this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.dateNow)
         this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.dateNow)
         this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow)
-        this.historique = this.donees.filter((e:any)=> e.Date < this.dateNow && e.Date >= this.last_week)
+        this.historique = this.donees.filter((e:any)=> e.Date != this.dateNow); console.log(this.historique);
+        
         this.hist8h = this.historique.filter((h:any)=> h.Heure == '08:00:00')
         this.hist12h = this.historique.filter((h:any)=> h.Heure == '12:00:00')
         this.hist19h = this.historique.filter((h:any)=> h.Heure == '19:00:00')
