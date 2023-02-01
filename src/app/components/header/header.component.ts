@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit{
   Mtemp!: any; Mhum!: any
   donees!: Tem_Hum[];
   donne8h:any; donne12h:any; donne19h:any
-  createDate: any
+  dateNow: any
   temp8h:any; temp12h:any; temp19h:any
   hum8h:any; hum12h:any; hum19h:any
 
@@ -38,14 +38,14 @@ export class HeaderComponent implements OnInit{
 }
 
 ngOnInit(): void {
-  this.createDate  = new Date().getDate() + '/' + new Date().getMonth() +1 + '/' + new Date().getFullYear() 
+  this.dateNow  = new Date().getDate() + '/' + new Date().getMonth() +1 + '/' + new Date().getFullYear() 
   this.authService.GetDonnees().subscribe(
     data => {
-      this.donees = data as unknown as Tem_Hum[];    console.log(this.donees);
+      this.donees = data as unknown as Tem_Hum[]
       
-      this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.createDate)
-      this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.createDate)
-      this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.createDate)
+      this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.dateNow)
+      this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.dateNow)
+      this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow)
 
       this.temp8h = this.donne8h[0].Temperature;
       this.temp12h = this.donne12h[0].Temperature; 
