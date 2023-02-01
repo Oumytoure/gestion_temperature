@@ -23,9 +23,10 @@ const io = require('socket.io')(server, {
     }
   });
 
-  app.use(cors())
+  app.use(cors());
+  app.use(express.static('public'));
 
-  router.route('/').get((req, res) =>{
+  router.route('/').get((req, res, next) =>{
     Model.find((error, response) =>{
         if (error) {
             return next(error)
@@ -42,7 +43,6 @@ app.use("/", router);
 });
 
 
-
 /* ------------------------------------------------------------------------ */
 
 var Url = "mongodb+srv://mbayang:mbayang07@cluster0.tzug7mq.mongodb.net/test"; 
@@ -51,6 +51,14 @@ const MongoClient = require('mongodb').MongoClient;
 const { SerialPort } = require('serialport')
 const { ReadlineParser } = require('@serialport/parser-readline')
 const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vitesse de transmission est de 9600 
+
+var statut = '0';
+io.on('connection', (socket) => {
+  console.log('Client connected');
+  socket.on('turn', (e) => {
+    statut = e; console.log(statut);
+  });
+});
 
 // On lit les donnees par ligne telles quelles apparaissent
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
@@ -63,6 +71,8 @@ parser.on('data', function(data) {
    //console.log('Températures et Humidités:');
    let buf = data.split('/');
    console.log(buf);
+
+   port.write(statut);
 
    const temperature = parseInt(data.slice(0, 2)); 
    const humidity = parseInt(data.slice(3, 5));
