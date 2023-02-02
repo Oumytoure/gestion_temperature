@@ -84,8 +84,7 @@ router.post('/login', (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: 'Compte non existant !',
-        })
+          message: 'Compte non existant !'})
       }
       getUser = user
       return bcrypt.compare(req.body.password, user.password)
@@ -100,16 +99,12 @@ router.post('/login', (req, res, next) => {
           message: 'Le compte est désactivé !' ,
         })
       }
-      let jwtToken = jwt.sign(
-        {
+      let jwtToken = jwt.sign({
           email: getUser.email,
           userId: getUser._id,
         },
-        'longer-secret-is-better',
-        {
-          expiresIn: '6h',
-        },
-      )
+        'longer-secret-is-better',{ expiresIn: '6h'
+      })
       res.status(200).json({
         token: jwtToken,
         expiresIn: 3600,
