@@ -18,13 +18,14 @@ import { Router } from "@angular/router";
 
     constructor(private http: HttpClient, public router: Router) {}
   
+    // Recuperer la temperature et l'humidité
+    GetDonnees(){
+      return this.http.get(`${this.endpointIo}`);
+    }
+
      // Recuprer tous les utilisateurs
     GetUsers() {
         return this.http.get(`${this.endpoint}`);
-    }
-
-    GetDonnees(){
-      return this.http.get(`${this.endpointIo}`);
     }
   
     // Recuperer un utilisateur
