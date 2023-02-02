@@ -1,3 +1,11 @@
+
+@media only screen and (max-width:800px){
+    .search
+    {
+        display: none;
+        
+    }
+}
 body{
     background-color:#E4F2F6;
     height: 100%;

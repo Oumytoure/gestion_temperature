@@ -54,6 +54,8 @@
         display: flex;
         flex-wrap: wrap;
         float: left;
+        justify-content: center;
+        align-items: center;
 
     } 
  /*    .navig{
