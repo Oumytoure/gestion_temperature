@@ -1,7 +1,7 @@
 <div class="navig">
     <div class="">
-        <img *ngIf="this.temperature >= 30" src="../../../assets/soleil.jpeg" alt="">
-        <img *ngIf="this.temperature < 30" src="../../../assets/humidite.jpg" alt="">
+        <img *ngIf="this.temperature > 30" src="../../../assets/soleil.jpeg" alt="">
+        <img *ngIf="this.temperature <=30" src="../../../assets/humidite.jpg" alt="">
         <img *ngIf="this.temperature == null" src="../../../assets/ciel.jpg" alt="">
     </div>
     <div class="d-flex icons m-3 bg-info">

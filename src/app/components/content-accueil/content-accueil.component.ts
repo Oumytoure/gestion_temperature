@@ -5,6 +5,9 @@ import { Tem_Hum } from 'src/app/models/temp_hum';
 import * as _ from 'lodash'
 
 
+//import socket client
+
+
 @Component({
   selector: 'app-content-accueil',
   templateUrl: './content-accueil.component.html',
@@ -34,10 +37,7 @@ export class ContentAccueilComponent implements OnInit{
         this.on = true
         this.off = false
       }
-      else if (temperature <= 30) {
-        this.on = false
-        this.off = true
-      }
+    
     });
     this.socket.on('humidity', (humidity: number) => {
       this.humidity = humidity;

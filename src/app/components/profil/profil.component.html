@@ -39,7 +39,8 @@
         </div>
         <form [formGroup]="formGroup" (ngSubmit)="onUpdate()">
           <label for='prenom'>Prenom</label>
-          <input type="text" formControlName="prenom" class="form-control">
+          <input type="text" formControlName="prenom" class="form-control"
+          [ngClass]="{'is-invalid':submitted && formGroup.controls['prenom'].errors}" formControlName="prenom">
           <div
             *ngIf="formGroup.controls.prenom.dirty && formGroup.controls.prenom.errors && formGroup.controls.prenom.errors.required"
             class="text-danger">
@@ -101,7 +102,7 @@
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="actuelPass" class="col-3" name="actuelPass">Ancien</label>
           <div>
-            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password" >
+            <input type="text" formControlName="actuelPass" class="form-control mb-3 " type="password">
             
             <div *ngIf="registerForm.controls.actuelPass.dirty && registerForm.controls.actuelPass.errors&&registerForm.controls.actuelPass.errors.required" class="text-danger">
               password requis 
@@ -127,7 +128,7 @@
         <div class="col-10 d-flex" style="gap: 10px;margin-left: 20px;">
           <label for="confirmdp" class="col-3 mt-3" name="confirmdp">Confirmation</label>
           <div>
-            <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password">
+            <input type="text" formControlName="confirmdp" class="form-control  mb-2 mt-3" type="password" >
             <div *ngIf="registerForm.controls.confirmdp.dirty && registerForm.controls.confirmdp.errors&&registerForm.controls.confirmdp.errors.required" class="text-danger">
             password requis
             </div>
