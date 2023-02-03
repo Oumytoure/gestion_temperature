@@ -44,7 +44,7 @@ export class ContentAccueilComponent implements OnInit{
     });
 
     this.socket.on('status', (status: string) => {
-      console.log(`Status: ${status}`);
+   
     });
   }
 
@@ -65,7 +65,7 @@ export class ContentAccueilComponent implements OnInit{
         this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.dateNow) // Recupere la temperature et l'humidité du jour à 8H
         this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.dateNow)
         this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow)
-        this.historique = this.donees.filter((e:any)=> e.Date != this.dateNow); console.log(this.historique); // Recupere l'historique de la semaine
+        this.historique = this.donees.filter((e:any)=> e.Date != this.dateNow);  // Recupere l'historique de la semaine
         
         this.hist8h = this.historique.filter((h:any)=> h.Heure == '08:00:00') // Recupére l'historique à 8H
         this.hist12h = this.historique.filter((h:any)=> h.Heure == '12:00:00')
