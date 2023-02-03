@@ -45,7 +45,7 @@ export class ConnexionComponent implements OnInit {
     }, // Intercepter les messages d'erreurs du serveur
     error => {
       this.errMsg = error.error.message
-      console.log(error.error.message)
+     
     });
   }
 }

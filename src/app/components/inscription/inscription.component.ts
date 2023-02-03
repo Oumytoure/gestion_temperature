@@ -61,7 +61,7 @@ export class InscriptionComponent {
             console.log('Response header has been received!');
             break;
           case HttpEventType.Response:
-            console.log('User successfully created!', event.body);
+           
         this.percentDone = false;
         Swal.fire({
           position: 'center',

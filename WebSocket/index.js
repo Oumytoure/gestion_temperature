@@ -41,7 +41,7 @@ const io = require('socket.io')(server, {
 app.use("/", router);
 
   server.listen(3000, function() { // Le port à écouter
-    console.log("Web socket connect port: ws://localhost:%s", 3000)
+   /*  console.log("Web socket connect port: ws://localhost:%s", 3000) */
 });
 
 
@@ -57,9 +57,9 @@ const port = new SerialPort({ path: '/dev/ttyUSB0', baudRate: 9600 })// Si la vi
 
 var statut = '0'; // initialiser le message qui doit être envoyer via le port série
 io.on('connection', (socket) => {
-  console.log('Client connected');
+
   socket.on('turn', (e) => { // Fonction émit lorsqu'un message est reçu du serveur
-    statut = e; console.log(statut);
+    statut = e; 
   });
 });
 
@@ -67,12 +67,12 @@ io.on('connection', (socket) => {
 const parser = port.pipe(new ReadlineParser({ delimiter: '\r\n' }))
  
 parser.on('open', function() {
-    console.log('Connexion ouverte');
+   
  });
 
 parser.on('data', function(data) {
    let buf = data.split('/'); //On stoke les données dans la variable
-   console.log(buf);
+   
 
    port.write(statut); // Ecrire sur le port série le statut recupérer
 
@@ -104,7 +104,7 @@ parser.on('data', function(data) {
         var tempEtHum = { 'Temperature': buf[0], 'Humidity': buf[1], 'Date': heureEtDate, 'Heure': heureInsertion };
         //Connexion a mongodb et insertion Temperature et humidite
         MongoClient.connect(Url, { useUnifiedTopology: true }, function(err, db) {
-           console.log('connecté');
+         
             if (err) throw err;
             var database = db.db("Gestion_Utilisateur"); // nom de ma bdd
             database.collection("temphums").insertOne(tempEtHum, function(err, res) {
@@ -118,5 +118,5 @@ parser.on('data', function(data) {
 
 //Si on arrive pas a lire sur le port, on affiche l'erreur concernee
 port.on('error', function(err) {
-    console.log(err);
+   
 });

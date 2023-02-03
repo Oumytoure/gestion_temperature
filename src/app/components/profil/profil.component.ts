@@ -59,7 +59,7 @@ pass!: string;
       data => {
         this.user = data;
         this.Users = this.user.filter((e: any) => e.etat == true)
-        console.log(this.Users)
+       
       }
     );
   }
@@ -118,7 +118,7 @@ pass!: string;
      
      this.submitted = true;
      if(this.registerForm.invalid){
-       console.log(this.registerForm.errors);
+     
        
       return ;
      }
