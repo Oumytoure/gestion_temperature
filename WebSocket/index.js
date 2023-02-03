@@ -109,7 +109,6 @@ parser.on('data', function(data) {
             var database = db.db("Gestion_Utilisateur"); // nom de ma bdd
             database.collection("temphums").insertOne(tempEtHum, function(err, res) {
                 if (err) throw err;
-                console.log("nouvelle insertion dans la bdd");
                 db.close();
             })
         });
