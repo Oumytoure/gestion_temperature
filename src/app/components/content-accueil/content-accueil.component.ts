@@ -4,7 +4,6 @@ import { Socket } from 'ngx-socket-io';
 import { Tem_Hum } from 'src/app/models/temp_hum';
 import * as _ from 'lodash'
 
-
 @Component({
   selector: 'app-content-accueil',
   templateUrl: './content-accueil.component.html',
@@ -34,6 +33,7 @@ export class ContentAccueilComponent implements OnInit{
         this.on = true
         this.off = false
       }
+    
     });
     this.socket.on('humidity', (humidity: number) => {
       this.humidity = humidity;
