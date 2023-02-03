@@ -99,7 +99,7 @@ parser.on('data', function(data) {
     var heureEtDate = mois + '/' + numMois + '/' + laDate;
 
        //Insertion à la base de donénes aux différents heures
-    if ((heur == 08 && min == 00 && sec == 00) || (heur == 12 && min == 32 && sec == 00) || (heur == 19 && min == 00 && sec == 00)) {
+    if ((heur == 09 && min == 22 && sec == 00) || (heur == 09 && min == 23 && sec == 00) || (heur == 09 && min == 24 && sec == 00)) {
         //l'objet qui contient la temperature, humidite et la date
         var tempEtHum = { 'Temperature': buf[0], 'Humidity': buf[1], 'Date': heureEtDate, 'Heure': heureInsertion };
         //Connexion a mongodb et insertion Temperature et humidite

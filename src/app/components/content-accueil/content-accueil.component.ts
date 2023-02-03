@@ -33,7 +33,7 @@ export class ContentAccueilComponent implements OnInit{
     this.socket.connect();
     this.socket.on('temperature', (temperature: number) => {
       this.temperature = temperature; 
-      if (temperature > 30) { // Afficher le ventillateur allumé lorsque la temperature est supérieur a 30
+      if (temperature >= 27) { // Afficher le ventillateur allumé lorsque la temperature est supérieur a 30
         this.on = true
         this.off = false
       }

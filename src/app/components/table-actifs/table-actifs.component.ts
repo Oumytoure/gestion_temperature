@@ -48,7 +48,7 @@ ngOnInit(): void {
       }
   );
 }
-
+//fontion pour switcher un user
 switcher = (id:any,role:any) => {
   role == "Administrateur" ? role ="Utilisateur": role = "Administrateur"
   const user ={
@@ -59,7 +59,7 @@ switcher = (id:any,role:any) => {
       this.ngOnInit();
     });
 }
-
+//achiver un user
 archiver=(id:any,etat:any)=> {
   etat == true ? etat =false: etat = true
   const user ={
@@ -92,7 +92,7 @@ getUserData(id:any,prenom:any,nom:any,email:any){
       email: [email, [Validators.required, Validators.email]],
     });
 }
-
+//modifier user
 onUpdate(){
   const id =  this.formGroup.value.id;
 const user ={

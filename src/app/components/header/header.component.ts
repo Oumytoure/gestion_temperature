@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit{
   dateNow: any
   temp8h:any; temp12h:any; temp19h:any
   hum8h:any; hum12h:any; hum19h:any
+  jour:any; mois:any
 
   constructor(private socket: Socket,
               public authService: AuthService) {
@@ -38,7 +39,16 @@ export class HeaderComponent implements OnInit{
 }
 
 ngOnInit(): void {
-  this.dateNow  = new Date().getDate() + '/' + new Date().getMonth() +1 + '/' + new Date().getFullYear() 
+  this.jour = new Date().getDate()
+  this.mois = new Date().getMonth()+1
+  if (this.jour < 10) {
+    this.jour = '0' + this.jour
+  }
+  if (this.mois < 10) {
+    this.mois = '0' + this.mois
+  }
+  this.dateNow  = this.jour + '/' + this.mois + '/' + new Date().getFullYear()
+
   this.authService.GetDonnees().subscribe(
     data => {
       this.donees = data as unknown as Tem_Hum[]

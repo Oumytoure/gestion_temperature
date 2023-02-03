@@ -59,35 +59,5 @@ app.use(function (err, req, res, next) {
 
 
 
-//<socket io>
 
-/* var io = require('socket.io');
-
-
-console.log('io');
-
-
-
-io.sockets.on('connection', function (socket) {
-  socket.on('message', function (data) {
-    socket.broadcast.emit('message', data);
-    console.log(data);
-  });
-}); */
-// <socket io/>
-
-
-// arduino
-/* var serialport = require('serialport');
-const parsers = serialport.parsers;
-const parser = new parsers.ReadLine({
-  delimeter :"\r\n"
-
-});
-var  portArduino = new serialport("COM4",{
-  baudRate: 9060,
-
-});
- */
-//
 

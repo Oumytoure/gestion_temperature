@@ -21,11 +21,7 @@
               <th scope="col">Email</th>
               <th scope="col">Rôle</th>
               <th *ngIf="this.currentUser.role === 'Utilisateur'" scope="col">Date inscription</th>
-<<<<<<< HEAD
-              <th *ngIf="(this.currentUser.role === 'Administrateur') || (this.currentUser.role ==='Super_admin')" scope="col">Actions</th>
-=======
               <th *ngIf="(this.currentUser.role === 'Administrateur') || (this.currentUser.role === 'Super_admin')" scope="col">Actions</th>
->>>>>>> origin/mg
           </tr>
       </thead>
       <!-- Recuperer et afficher les informations de la base de donnée -->
