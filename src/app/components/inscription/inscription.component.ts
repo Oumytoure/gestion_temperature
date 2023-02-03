@@ -55,10 +55,10 @@ export class InscriptionComponent {
       this.formGroup.value.etat, this.formGroup.value.matricule).subscribe((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.Sent:
-            console.log('Requete éxecutée!');
+            
             break;
           case HttpEventType.ResponseHeader:
-            console.log('Response header has been received!');
+            
             break;
           case HttpEventType.Response:
            
