@@ -34,10 +34,6 @@ export class ContentAccueilComponent implements OnInit{
         this.on = true
         this.off = false
       }
-      else if (temperature <= 30) {
-        this.on = false
-        this.off = true
-      }
     });
     this.socket.on('humidity', (humidity: number) => {
       this.humidity = humidity;
