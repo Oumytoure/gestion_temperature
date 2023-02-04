@@ -66,11 +66,11 @@
     </div>
     <div class="hist">
         <h4 class="text-primary text-center m-2">Historique de la semaine</h4>
-        <table class="table table-bordered my-5">
+        <table class="table table-bordered my-4">
             <thead>
               <tr>
                 <th scope="col"><i class="bi bi-calendar-check"></i> Jours</th>
-                <th scope="col"*ngFor="let date of filter_hist" >{{date.Date}}</th>
+                <th scope="col"*ngFor="let date of filter_hist | paginate: {itemsPerPage:7, currentPage:page, totalItems:totalLenght}" >{{date.Date}}</th>
               </tr>
             </thead>
             <tbody>
@@ -93,7 +93,11 @@
                 </td>
               </tr>
             </tbody>
-          </table>
+        </table>
+            <!-- ------------------------Pagination---------------------- -->
+            <div class="pagination justify-content-end">
+                <pagination-controls (pageChange)="page=$event"></pagination-controls>
+            </div>
     </div>
 </div>
 <html>

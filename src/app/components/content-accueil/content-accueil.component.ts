@@ -22,6 +22,8 @@ export class ContentAccueilComponent implements OnInit{
   hist8h: any; hist12h: any; hist19h: any
   filter_hist: any
   jour:any; mois:any
+  page: number = 1;
+  totalLenght: any;
 
   constructor(private socket: Socket,
               public authService: AuthService){
