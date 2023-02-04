@@ -54,14 +54,14 @@ export class ContentAccueilComponent implements OnInit{
       this.mois = '0' + this.mois
     }
     this.dateNow  = this.jour + '/' + this.mois + '/' + new Date().getFullYear()
-    this.last_week = this.jour - 7 + '/' + this.mois + '/' + new Date().getFullYear(); console.log(this.last_week)
+    this.last_week = this.jour - 7 + '/' + this.mois + '/' + new Date().getFullYear()
     this.authService.GetDonnees().subscribe(
       data => {
         this.donees = data as unknown as Tem_Hum[]; // Stoke tous les données de la bdd
         this.donne8h = this.donees.filter((e:any)=> e.Heure == '08:00:00' && e.Date == this.dateNow) // Recupere la temperature et l'humidité du jour à 8H
         this.donne12h = this.donees.filter((e:any)=> e.Heure == '12:00:00' && e.Date == this.dateNow)
         this.donne19h = this.donees.filter((e:any)=> e.Heure == '19:00:00' && e.Date == this.dateNow)
-        this.historique = this.donees.filter((e:any)=> e.Date != this.dateNow); console.log(this.historique); // Recupere l'historique de la semaine
+        this.historique = this.donees.filter((e:any)=> e.Date != this.dateNow) // Recupere l'historique de la semaine
         
         this.hist8h = this.historique.filter((h:any)=> h.Heure == '08:00:00') // Recupére l'historique à 8H
         this.hist12h = this.historique.filter((h:any)=> h.Heure == '12:00:00')

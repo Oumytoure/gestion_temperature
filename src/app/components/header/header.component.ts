@@ -24,11 +24,6 @@ export class HeaderComponent implements OnInit{
   constructor(private socket: Socket,
               public authService: AuthService) {
 
-  // Recuperer les informations de l'utilisateur
-  let id = localStorage.getItem('id');  
-  this.authService.getUserProfile(id).subscribe((res) => {
-    this.currentUser = res.msg;
-  });
 
   this.socket.connect();
   this.socket.on('temperature', (temperature: number) => {
